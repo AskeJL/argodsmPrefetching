@@ -102,6 +102,8 @@ typedef struct argo_statistics_struct {
 		std::atomic<std::size_t> write_misses;
 		/** @brief Number of loads */
 		std::atomic<std::size_t> read_misses;
+		/** @brief Number of pages prefetched */
+		std::atomic<std::size_t> prefetches;
 		/** @brief Number of barriers executed */
 		std::size_t barriers;
 		/** @brief Number of locks */

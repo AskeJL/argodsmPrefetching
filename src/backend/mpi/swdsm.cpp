@@ -437,8 +437,10 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 			touchedcache[idx] = 1;
 			cacheControl[idx].state = VALID;
 			cacheControl[idx].dirty = CLEAN;
-			/* Unlock every lock but that for start_index */
+			/* For pages that are not start_index,
+			unlock and increment prefetches count */
 			if(idx != start_index) {
+				stats.prefetches++;
 				cache_locks[idx].unlock();
 			}
 		}
@@ -1395,6 +1397,11 @@ void print_statistics() {
 					   argo_write_buffer->get_flush_time(),
 					   argo_write_buffer->get_write_back_time(),
 					   argo_write_buffer->get_buffer_lock_time());
+
+				/* Print Prefetcher info */
+				printf("#  " CYN "# Prefetcher\n" RESET);
+				printf("#  prefetches : %13\n",
+					   stats.prefetches);
 
 				/* Print advanced node information */
 				if(print_level > 2) {
