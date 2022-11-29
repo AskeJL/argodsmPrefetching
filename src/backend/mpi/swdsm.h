@@ -74,6 +74,8 @@ typedef struct myControlData {
 		argo_byte dirty;     // is this locally dirty?
 		/** @brief Tracks address of page */
 		std::uintptr_t tag;  // address of global page in distr memory
+		/** @brief State for Prefetching */
+		argo_byte prefetch_state; // P | NP | UP
 } control_data;
 
 /** @brief Struct containing statistics */
@@ -104,6 +106,14 @@ typedef struct argo_statistics_struct {
 		std::atomic<std::size_t> read_misses;
 		/** @brief Number of pages prefetched */
 		std::atomic<std::size_t> prefetches;
+		/** @brief Number of pages prefetched that were update */
+		std::atomic<std::size_t> prefetches_updated;
+		/** @brief Number of pages prefetched that were used */
+		std::atomic<std::size_t> prefetches_used;
+		/** @brief Time for end of initialize end time*/
+		std::uint64_t initialize_end_time;
+		/** @brief Time for start of argo_finalize method*/
+		std::uint64_t argo_finalize_start_time;
 		/** @brief Number of barriers executed */
 		std::size_t barriers;
 		/** @brief Number of locks */
@@ -254,6 +264,14 @@ static const argo_byte DIRTY = 3;
 static const argo_byte WRITER = 4;
 /** @brief Constant for reader states */
 static const argo_byte READER = 5;
+
+/*constants for prefetch state values*/
+/** @brief Constant for Not A Prefetch states */
+static const argo_byte NOT_PREFETCHED = 0;
+/** @brief Constant for Prefetched states */
+static const argo_byte PREFETCHED = 1;
+/** @brief Constant for Prefetched and Used states */
+static const argo_byte USED_PREFETCHED = 2;
 
 /**
  * @brief The size of a hardware memory page

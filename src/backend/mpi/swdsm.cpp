@@ -15,6 +15,7 @@
 #include "signal/signal.hpp"
 #include "virtual_memory/virtual_memory.hpp"
 
+namespace chr = std::chrono;
 namespace dd = argo::data_distribution;
 namespace vm = argo::virtual_memory;
 namespace sig = argo::signal;
@@ -256,6 +257,8 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 	const std::size_t fetch_size = end_index - start_index;
 	const std::size_t classification_size = fetch_size*2;
 
+	stats.prefetches += fetch_size;
+
 	/* For each page to load, true if page should be cached else false */
 	std::vector<bool> pages_to_load(fetch_size);
 	/* For each page to update in the cache, true if page has
@@ -309,6 +312,7 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 			cacheControl[idx].state = INVALID;
 			cacheControl[idx].tag = temp_addr;
 			cacheControl[idx].dirty = CLEAN;
+			cacheControl[idx].prefetch_state = NOT_PREFETCHED;
 			vm::map_memory(temp_ptr, block_size, pagesize*idx, PROT_NONE);
 			mprotect(old_ptr, block_size, PROT_NONE);
 		}
@@ -430,6 +434,8 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 			if(cacheControl[idx].tag == GLOBAL_NULL) {
 				vm::map_memory(temp_ptr, block_size, pagesize*idx, PROT_READ);
 				cacheControl[idx].tag = temp_addr;
+				if (idx != start_index)
+					cacheControl[idx].prefetch_state = PREFETCHED;
 			} else {
 				/* Else, just mprotect the region */
 				mprotect(temp_ptr, block_size, PROT_READ);
@@ -440,7 +446,7 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 			/* For pages that are not start_index,
 			unlock and increment prefetches count */
 			if(idx != start_index) {
-				stats.prefetches++;
+				stats.prefetches_updated++;
 				cache_locks[idx].unlock();
 			}
 		}
@@ -595,6 +601,13 @@ void handler(int sig, siginfo_t *si, void *context) {
 		load_cache_entry(aligned_access_offset);
 		performed_load = true;
 	}
+
+	if (performed_load == false)
+		if (cacheControl[startIndex].prefetch_state == PREFETCHED)
+		{
+			cacheControl[startIndex].prefetch_state = USED_PREFETCHED;
+			stats.prefetches_used.fetch_add(1);
+		}
 
 	/* If miss is known to originate from a read access, or if the
 	 * access type is unknown but a load has already been performed
@@ -882,15 +895,20 @@ void argo_initialize(std::size_t argo_size, std::size_t cache_size) {
 		cacheControl[i].tag = GLOBAL_NULL;
 		cacheControl[i].state = INVALID;
 		cacheControl[i].dirty = CLEAN;
+		cacheControl[i].prefetch_state = NOT_PREFETCHED;
 	}
 
 	argo_reset_coherence();
 	double init_end = MPI_Wtime();
 	stats.inittime = init_end - init_start;
 	stats.exectime = init_end;
+	// Timer for when argo is done initializing
+	stats.initialize_end_time = chr::duration_cast<chr::milliseconds>(chr::system_clock::now().time_since_epoch()).count();
 }
 
 void argo_finalize() {
+	// Timer for when argo is done
+	stats.argo_finalize_start_time = chr::duration_cast<chr::milliseconds>(chr::system_clock::now().time_since_epoch()).count();
 	swdsm_argo_barrier(1);
 	if(workrank == 0) {
 		printf("ArgoDSM shutting down\n");
@@ -1073,6 +1091,7 @@ void argo_reset_coherence() {
 		cacheControl[i].tag = GLOBAL_NULL;
 		cacheControl[i].state = INVALID;
 		cacheControl[i].dirty = CLEAN;
+		cacheControl[i].prefetch_state = NOT_PREFETCHED;
 	}
 
 	for(std::size_t i = 0; i < classificationSize; i += (load_size*2)) {
@@ -1367,6 +1386,8 @@ void print_statistics() {
 				env::allocation_policy(), env::allocation_block_size(), env::load_size());
 		printf("#  active time: %12.4fs   init time: %14.4fs\n",
 				stats.exectime, stats.inittime);
+		printf("# initialize end time: %ld    finalize start time: %ld   Total program run time: %ld\n",
+				stats.initialize_end_time, stats.argo_finalize_start_time, (stats.argo_finalize_start_time-stats.initialize_end_time));
 		printf("\n");
 	}
 
@@ -1400,8 +1421,12 @@ void print_statistics() {
 
 				/* Print Prefetcher info */
 				printf("#  " CYN "# Prefetcher\n" RESET);
-				printf("#  prefetches : %13\n",
-					   stats.prefetches);
+				printf("#  prefetches total : %13ld    ",
+						stats.prefetches.load());
+				printf("#  prefetches updated : %13ld    ",
+						stats.prefetches_updated.load());
+				printf("#  used_prefetch states : %13ld\n",
+						stats.prefetches_used.load());
 
 				/* Print advanced node information */
 				if(print_level > 2) {
