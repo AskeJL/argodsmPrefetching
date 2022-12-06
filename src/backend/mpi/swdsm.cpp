@@ -432,13 +432,28 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 
 			/* If this is the first time inserting in to this index, perform vm map */
 			if(cacheControl[idx].tag == GLOBAL_NULL) {
-				vm::map_memory(temp_ptr, block_size, pagesize*idx, PROT_READ);
 				cacheControl[idx].tag = temp_addr;
-				if (idx != start_index)
+				if (idx == start_index)
+				{
+					vm::map_memory(temp_ptr, block_size, pagesize*idx, PROT_READ);
+					cacheControl[idx].prefetch_state = NOT_PREFETCHED;
+				} else
+				{
+					vm::map_memory(temp_ptr, block_size, pagesize*idx, PROT_NONE);
 					cacheControl[idx].prefetch_state = PREFETCHED;
-			} else {
-				/* Else, just mprotect the region */
-				mprotect(temp_ptr, block_size, PROT_READ);
+				}
+			} else
+			{
+				/* Note that if not a first time insertion, then it's an eviction,
+				   in which case some of the work has already happended previously */
+				if (idx == start_index)
+				{
+					mprotect(temp_ptr, block_size, PROT_READ);
+					cacheControl[idx].prefetch_state = NOT_PREFETCHED;
+				} else {
+					// mprotect should have already given this page PROT_NONE
+					cacheControl[idx].prefetch_state = PREFETCHED;
+				}
 			}
 			touchedcache[idx] = 1;
 			cacheControl[idx].state = VALID;
@@ -596,18 +611,26 @@ void handler(int sig, siginfo_t *si, void *context) {
 	tag = cacheControl[startIndex].tag;
 	bool performed_load = false;
 
+	if (cacheControl[startIndex].prefetch_state == PREFETCHED)
+	{
+		assert(cacheControl[startIndex].state == VALID);
+		assert(cacheControl[startIndex].tag == aligned_access_offset);
+
+		cacheControl[startIndex].prefetch_state = USED_PREFETCHED;
+		mprotect(aligned_access_ptr, pagesize*CACHELINE, PROT_READ);
+		stats.prefetches_used.fetch_add(1);
+		if (miss_type == sig::access_type::read)
+		{
+			cache_locks[startIndex].unlock();
+			return; // Exit from the read attempt
+		}
+	}
+
 	/* Fetch the correct page if necessary */
 	if(state == INVALID || (tag != aligned_access_offset && tag != GLOBAL_NULL)) {
 		load_cache_entry(aligned_access_offset);
 		performed_load = true;
 	}
-
-	if (performed_load == false)
-		if (cacheControl[startIndex].prefetch_state == PREFETCHED)
-		{
-			cacheControl[startIndex].prefetch_state = USED_PREFETCHED;
-			stats.prefetches_used.fetch_add(1);
-		}
 
 	/* If miss is known to originate from a read access, or if the
 	 * access type is unknown but a load has already been performed
@@ -988,6 +1011,7 @@ void self_invalidation() {
 				mpi_lock_sharer[win_index][workrank].unlock(workrank, sharer_windows[win_index][workrank]);
 				cacheControl[i].dirty = CLEAN;
 				cacheControl[i].state = INVALID;
+				cacheControl[i].prefetch_state = NOT_PREFETCHED;
 				touchedcache[i] = 0;
 				mprotect(static_cast<char*>(startAddr) + lineAddr, pagesize*CACHELINE, PROT_NONE);
 			}
@@ -1032,6 +1056,7 @@ void self_upgrade(argo::backend::upgrade_type upgrade) {
 				mprotect(global_addr, block_size, PROT_NONE);
 				cacheControl[cache_index].dirty = CLEAN;
 				cacheControl[cache_index].state = INVALID;
+				cacheControl[cache_index].prefetch_state = NOT_PREFETCHED;
 				touchedcache[cache_index] = 0;
 			} else {
 				// Must protect all pages upgrading to S from writes

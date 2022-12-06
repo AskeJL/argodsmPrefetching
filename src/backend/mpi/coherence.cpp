@@ -74,6 +74,7 @@ void _selective_acquire(void *addr, std::size_t size) {
 			mpi_lock_sharer[win_index][node_id].unlock(node_id, sharer_windows[win_index][node_id]);
 			cacheControl[cache_index].dirty = CLEAN;
 			cacheControl[cache_index].state = INVALID;
+			cacheControl[cache_index].prefetch_state = NOT_PREFETCHED;
 			touchedcache[cache_index] = 0;
 			mprotect(reinterpret_cast<char*>(start_address) + page_address, block_size, PROT_NONE);
 		}
