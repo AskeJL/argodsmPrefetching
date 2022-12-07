@@ -1,0 +1,9 @@
+<map id="argo::backend::acquire" name="argo::backend::acquire">
+<area shape="rect" id="node1" title="causes a node to self&#45;invalidate its cache, and thus getting any updated values on subsequent accesse..." alt="" coords="5,97,175,123"/>
+<area shape="rect" id="node2" href="$swdsm_8cpp_a44b8bb7a3c8b47b4f9552c8e10b25e4b.html#a44b8bb7a3c8b47b4f9552c8e10b25e4b" title="acquire function for ArgoDSM (Acquire according to Release Consistency)" alt="" coords="223,97,329,123"/>
+<area shape="rect" id="node3" href="$swdsm_8cpp_aa7c3a2de6bbafdaf68fe6ceb6110ab97.html#aa7c3a2de6bbafdaf68fe6ceb6110ab97" title="Self&#45;Invalidates all memory that has potential writers." alt="" coords="377,97,508,123"/>
+<area shape="rect" id="node4" href="$swdsm_8cpp_aff9ea7ba7f37206d933c8dc8004dbc7b.html#aff9ea7ba7f37206d933c8dc8004dbc7b" title="Gives an index to the sharer/writer vector depending on the address." alt="" coords="571,5,705,47"/>
+<area shape="rect" id="node5" href="$swdsm_8cpp_a7d0d0386804df222465aaa199aab92da.html#a7d0d0386804df222465aaa199aab92da" title="Gets the sharer window index based on the classification index." alt="" coords="556,71,720,98"/>
+<area shape="rect" id="node6" href="$classmpi__lock_a67301b26c3bb28c746e164c9f531d21d.html#a67301b26c3bb28c746e164c9f531d21d" title="acquire mpi_lock" alt="" coords="580,122,696,149"/>
+<area shape="rect" id="node7" href="$classmpi__lock_a38cb3649cba54a2818810c444a8b475a.html#a38cb3649cba54a2818810c444a8b475a" title="release mpi_lock" alt="" coords="572,173,704,199"/>
+</map>

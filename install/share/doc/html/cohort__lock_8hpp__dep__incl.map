@@ -1,0 +1,5 @@
+<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/synchronization/cohort_lock.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/synchronization/cohort_lock.hpp">
+<area shape="rect" id="node1" title="This file provides a cohort lock for the ArgoDSM system." alt="" coords="145,5,403,76"/>
+<area shape="rect" id="node2" href="$cohort__lock_8cpp.html" title="This file provides a C interface for ArgoDSM&#45;based cohort locks." alt="" coords="5,124,263,195"/>
+<area shape="rect" id="node3" href="$lock_8cpp.html" title="This file provides unit tests for the ArgoDSM locks." alt="" coords="287,131,544,187"/>
+</map>

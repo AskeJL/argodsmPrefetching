@@ -1,0 +1,9 @@
+<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/backend/mpi/mpi_lock.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/backend/mpi/mpi_lock.hpp">
+<area shape="rect" id="node1" title="Declaration of MPI lock." alt="" coords="427,5,684,61"/>
+<area shape="rect" id="node2" href="$mpi__lock_8cpp.html" title="This file provides an implementation of a specialized MPI lock allowing multiple threads to access an..." alt="" coords="287,109,544,165"/>
+<area shape="rect" id="node3" href="$swdsm_8h.html" title="this is a legacy file from the ArgoDSM prototype" alt="" coords="568,109,825,165"/>
+<area shape="rect" id="node4" href="$coherence_8cpp.html" title="This file implements selective coherence mechanisms for ArgoDSM." alt="" coords="5,213,263,269"/>
+<area shape="rect" id="node5" href="$mpi_8cpp.html" title="MPI backend implementation." alt="" coords="287,213,544,269"/>
+<area shape="rect" id="node6" href="$swdsm_8cpp.html" title="This file implements the MPI&#45;backend of ArgoDSM." alt="" coords="568,213,825,269"/>
+<area shape="rect" id="node7" href="$write__buffer_8hpp.html" title="This file provides an interface for the ArgoDSM write buffer." alt="" coords="849,213,1107,269"/>
+</map>

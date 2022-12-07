@@ -1,0 +1,15 @@
+<map id="cache_lock::lock" name="cache_lock::lock">
+<area shape="rect" id="node1" title="Acquire a cache lock." alt="" coords="1033,85,1163,112"/>
+<area shape="rect" id="node2" href="$classcache__lock_aa7122e81c30f6d68707c8f5c13506c5d.html#aa7122e81c30f6d68707c8f5c13506c5d" title="Get the time spent holding the lock." alt="" coords="791,5,985,32"/>
+<area shape="rect" id="node3" href="$classcache__lock_a20765dc9363f22615608c3936acbea12.html#a20765dc9363f22615608c3936acbea12" title="Get the time spent waiting for the lock." alt="" coords="791,56,985,83"/>
+<area shape="rect" id="node6" href="$classcache__lock_a7c2050c2d1fe11a3a2772a0305c0905e.html#a7c2050c2d1fe11a3a2772a0305c0905e" title="Get the number of times this lock was held." alt="" coords="809,107,967,149"/>
+<area shape="rect" id="node7" href="$classcache__lock_afecdbd6c7a1eb2e109b55bb90d44a6cb.html#afecdbd6c7a1eb2e109b55bb90d44a6cb" title="Clear all recorded statistics." alt="" coords="801,173,975,200"/>
+<area shape="rect" id="node4" href="$swdsm_8cpp_a3c8a8769158025ec9e929601b9df6439.html#a3c8a8769158025ec9e929601b9df6439" title="Prints collected statistics." alt="" coords="618,85,737,112"/>
+<area shape="rect" id="node5" href="$swdsm_8cpp_aa954d5e0bcaee69ff6e03e697bcaf68b.html#aa954d5e0bcaee69ff6e03e697bcaf68b" title="shut down ArgoDSM system" alt="" coords="429,85,534,112"/>
+<area shape="rect" id="node8" href="$swdsm_8cpp_aef8dea0c8e31701818a5017a5ff20223.html#aef8dea0c8e31701818a5017a5ff20223" title="Resets all ArgoDSM statistics." alt="" coords="612,173,743,200"/>
+<area shape="rect" id="node9" href="$swdsm_8cpp_adb17e929b24ae3fd6898035fce958122.html#adb17e929b24ae3fd6898035fce958122" title="Resets current ArgoDSM coherence." alt="" coords="399,140,564,167"/>
+<area shape="rect" id="node13" href="$backend_8hpp_af6ad14f66aee964bd630b7d194a699de.html#af6ad14f66aee964bd630b7d194a699de" title="Resets statistics for the ArgoDSM backend in use." alt="" coords="404,215,559,257"/>
+<area shape="rect" id="node10" href="$swdsm_8cpp_a31ba60e8ddccfa922da8d7e6a10f7b1d.html#a31ba60e8ddccfa922da8d7e6a10f7b1d" title="Initializes ArgoDSM runtime." alt="" coords="216,99,331,125"/>
+<area shape="rect" id="node12" href="$backend_8hpp_acb57f009ad65913e26147c6813eda04e.html#acb57f009ad65913e26147c6813eda04e" title="Resets current ArgoDSM coherence." alt="" coords="196,174,351,215"/>
+<area shape="rect" id="node11" href="$backend_8hpp_aab3cabb3e1c0b9696b339416b684f78c.html#aab3cabb3e1c0b9696b339416b684f78c" title="initialize backend" alt="" coords="5,99,148,125"/>
+</map>

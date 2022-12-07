@@ -1,0 +1,4 @@
+<map id="argo::delete_array" name="argo::delete_array">
+<area shape="rect" id="node1" title="Delete a globally allocated array of object." alt="" coords="123,5,264,32"/>
+<area shape="rect" id="node2" href="$tests_2allocators_8cpp_a0571f7229f019db2f46d8f56bebd01d0.html#a0571f7229f019db2f46d8f56bebd01d0" title="mixes dynamic and collective allocation and stores dynamic arrays in a collective arrays to communica..." alt="" coords="5,5,75,32"/>
+</map>

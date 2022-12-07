@@ -1,0 +1,11 @@
+<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/data_distribution/first_touch_distribution.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/data_distribution/first_touch_distribution.hpp">
+<area shape="rect" id="node1" title="This file implements the first&#45;touch data distribution." alt="" coords="5,5,263,76"/>
+<area shape="rect" id="node2" title=" " alt="" coords="33,124,97,151"/>
+<area shape="rect" id="node3" title=" " alt="" coords="89,199,147,225"/>
+<area shape="rect" id="node4" href="$base__distribution_8hpp.html" title="This file implements the base distribution class for all the policies to derive from." alt="" coords="203,124,366,151"/>
+<area shape="rect" id="node5" title=" " alt="" coords="172,199,237,225"/>
+<area shape="rect" id="node6" title=" " alt="" coords="262,199,342,225"/>
+<area shape="rect" id="node7" href="$env_8hpp.html" title="This file provides facilities for handling environment variables." alt="" coords="366,199,467,225"/>
+<area shape="rect" id="node9" href="$types_8hpp.html" title="This file defines common types used in ArgoDSM." alt="" coords="492,199,619,225"/>
+<area shape="rect" id="node8" title=" " alt="" coords="381,273,452,300"/>
+</map>

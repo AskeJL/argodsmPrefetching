@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['selective_5facquire_875',['selective_acquire',['../backend_8hpp_aad1b8c62447de8cc06b7b4f031b77b01.html#aad1b8c62447de8cc06b7b4f031b77b01',1,'argo::backend']]],
+  ['selective_5frelease_876',['selective_release',['../backend_8hpp_a37c88e1409650776ddb3a33d7f2744cb.html#a37c88e1409650776ddb3a33d7f2744cb',1,'argo::backend']]],
+  ['self_5finvalidation_877',['self_invalidation',['../swdsm_8cpp_aa7c3a2de6bbafdaf68fe6ceb6110ab97.html#aa7c3a2de6bbafdaf68fe6ceb6110ab97',1,'self_invalidation():&#160;swdsm.cpp'],['../swdsm_8h_aa7c3a2de6bbafdaf68fe6ceb6110ab97.html#aa7c3a2de6bbafdaf68fe6ceb6110ab97',1,'self_invalidation():&#160;swdsm.cpp']]],
+  ['self_5fupgrade_878',['self_upgrade',['../swdsm_8cpp_adafea891224a2b1860cbc6afe9610334.html#adafea891224a2b1860cbc6afe9610334',1,'swdsm.cpp']]],
+  ['set_5fmemory_5fspace_879',['set_memory_space',['../classargo_1_1data__distribution_1_1base__distribution_a4b275eeffdafd81ecbd739ea03942666.html#a4b275eeffdafd81ecbd739ea03942666',1,'argo::data_distribution::base_distribution']]],
+  ['set_5fmempool_880',['set_mempool',['../classargo_1_1allocators_1_1generic__allocator_af7bba2f941e23af3efd7b06a7feeb296.html#af7bba2f941e23af3efd7b06a7feeb296',1,'argo::allocators::generic_allocator']]],
+  ['set_5fsighandler_881',['set_sighandler',['../swdsm_8h_aa3330e320e192eaf23e0b2d71a2f1dcf.html#aa3330e320e192eaf23e0b2d71a2f1dcf',1,'swdsm.h']]],
+  ['sharer_5fop_882',['sharer_op',['../swdsm_8cpp_a2a2d9247bd62413b221876836b39dafb.html#a2a2d9247bd62413b221876836b39dafb',1,'sharer_op(int lock_type, int rank, int offset, std::function&lt; void(const std::size_t window_index)&gt; op):&#160;swdsm.cpp'],['../swdsm_8h_a2a2d9247bd62413b221876836b39dafb.html#a2a2d9247bd62413b221876836b39dafb',1,'sharer_op(int lock_type, int rank, int offset, std::function&lt; void(const std::size_t window_index)&gt; op):&#160;swdsm.cpp']]],
+  ['singlenode_5fhandler_883',['singlenode_handler',['../singlenode_8cpp_aa85919231c2adb5cad84c6707cb19f1c.html#aa85919231c2adb5cad84c6707cb19f1c',1,'singlenode.cpp']]],
+  ['size_884',['size',['../classwrite__buffer_a6cd208e8e94ef77f0b19e83bf20059c6.html#a6cd208e8e94ef77f0b19e83bf20059c6',1,'write_buffer::size()'],['../anonymous_8cpp_ab7d165839faaa408a36d34192707b119.html#ab7d165839faaa408a36d34192707b119',1,'argo::virtual_memory::size()']]],
+  ['start_5faddress_885',['start_address',['../anonymous_8cpp_a3f90edafbf67470e9a335c175503368e.html#a3f90edafbf67470e9a335c175503368e',1,'argo::virtual_memory']]],
+  ['store_886',['store',['../backend_8hpp_a360aa0082e4b2bfe2f6c19d333ff56fa.html#a360aa0082e4b2bfe2f6c19d333ff56fa',1,'argo::backend::atomic']]],
+  ['storepagediff_887',['storepageDIFF',['../swdsm_8cpp_a3b6a6b2b244edb9faa79814ce8e5e9f5.html#a3b6a6b2b244edb9faa79814ce8e5e9f5',1,'storepageDIFF(std::size_t index, std::uintptr_t addr):&#160;swdsm.cpp'],['../swdsm_8h_a3b6a6b2b244edb9faa79814ce8e5e9f5.html#a3b6a6b2b244edb9faa79814ce8e5e9f5',1,'storepageDIFF(std::size_t index, std::uintptr_t addr):&#160;swdsm.cpp']]],
+  ['swdsm_5fargo_5fbarrier_888',['swdsm_argo_barrier',['../swdsm_8cpp_aca8a35703563223a3e182ebc897e2b40.html#aca8a35703563223a3e182ebc897e2b40',1,'swdsm_argo_barrier(int n, argo::backend::upgrade_type upgrade):&#160;swdsm.cpp'],['../swdsm_8h_aefa2c91131d1b8aaa22503fa1446f3ab.html#aefa2c91131d1b8aaa22503fa1446f3ab',1,'swdsm_argo_barrier(int n, argo::backend::upgrade_type upgrade=argo::backend::upgrade_type::upgrade_none):&#160;swdsm.cpp']]],
+  ['synchronize_889',['synchronize',['../namespaceargo_1_1mempools_aaa24afb08a15776a8f2440531ba3121c.html#aaa24afb08a15776a8f2440531ba3121c',1,'argo::mempools']]],
+  ['synchronize_3c_20always_20_3e_890',['synchronize&lt; ALWAYS &gt;',['../namespaceargo_1_1mempools_a57715294abf7d14ce665556fc8bc4fdf.html#a57715294abf7d14ce665556fc8bc4fdf',1,'argo::mempools']]],
+  ['synchronize_3c_20node_5fzero_5fonly_20_3e_891',['synchronize&lt; NODE_ZERO_ONLY &gt;',['../namespaceargo_1_1mempools_a06f9a6c5d45716a00b40c6caa37988f9.html#a06f9a6c5d45716a00b40c6caa37988f9',1,'argo::mempools']]]
+];

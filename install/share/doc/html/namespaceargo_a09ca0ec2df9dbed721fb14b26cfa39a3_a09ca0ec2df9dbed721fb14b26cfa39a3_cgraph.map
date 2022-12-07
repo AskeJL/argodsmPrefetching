@@ -1,0 +1,8 @@
+<map id="argo::codelete_" name="argo::codelete_">
+<area shape="rect" id="node1" title="template function to delete objects that were allocated using collective_new" alt="" coords="5,63,128,90"/>
+<area shape="rect" id="node2" href="$src_2allocators_2allocators_8cpp_a215edf4fe9276398650302b518c52baf.html#a215edf4fe9276398650302b518c52baf" title="basic free function for collective allocations, for C interface" alt="" coords="224,13,343,39"/>
+<area shape="rect" id="node5" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="228,63,339,90"/>
+<area shape="rect" id="node6" href="$namespaceargo_1_1mempools_aaa24afb08a15776a8f2440531ba3121c.html#aaa24afb08a15776a8f2440531ba3121c" title="synchronize memory metainformation (address) after growing to ensure visibility" alt="" coords="176,114,391,141"/>
+<area shape="rect" id="node3" href="$classargo_1_1allocators_1_1generic__allocator_ab98a25e383864eecd7d602f95c49c420.html#ab98a25e383864eecd7d602f95c49c420" title="free an allocated pointer" alt="" coords="439,5,617,47"/>
+<area shape="rect" id="node4" href="$classargo_1_1allocators_1_1generic__allocator_a83b1a04add59963243bfa60b48d58db4.html#a83b1a04add59963243bfa60b48d58db4" title="helper function for deallocation" alt="" coords="665,5,880,47"/>
+</map>

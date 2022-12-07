@@ -1,0 +1,6 @@
+<map id="argo::get_homenode" name="argo::get_homenode">
+<area shape="rect" id="node1" title="Get the ArgoDSM node id where addr is physically backed." alt="" coords="5,13,161,39"/>
+<area shape="rect" id="node2" href="$classargo_1_1data__distribution_1_1global__ptr_a3e2cdd4d323ef91174615e27ab94e342.html#a3e2cdd4d323ef91174615e27ab94e342" title="return the home node of the value pointed to, or a default value if the page has not yet been first&#45;t..." alt="" coords="209,5,384,47"/>
+<area shape="rect" id="node3" href="$classargo_1_1data__distribution_1_1global__ptr_ae4353680349f6abbd2cf262dace8e2f2.html#ae4353680349f6abbd2cf262dace8e2f2" title="return a pointer to the selected allocation policy" alt="" coords="432,5,601,47"/>
+<area shape="rect" id="node4" href="$namespaceargo_1_1env_a25a08cb2d0d11432d640ec7173063339.html#a25a08cb2d0d11432d640ec7173063339" title="get the allocation policy requested by environment variable" alt="" coords="649,5,804,47"/>
+</map>

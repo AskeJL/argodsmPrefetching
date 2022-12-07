@@ -1,0 +1,31 @@
+<map id="argo_finalize" name="argo_finalize">
+<area shape="rect" id="node1" title="Shutting down ArgoDSM runtime." alt="" coords="5,493,111,519"/>
+<area shape="rect" id="node2" href="$namespaceargo_aa6f830b22d3f1b054609c5ffa40af4b6.html#aa6f830b22d3f1b054609c5ffa40af4b6" title="shut down ArgoDSM system" alt="" coords="190,405,297,431"/>
+<area shape="rect" id="node3" href="$namespaceargo_1_1data__distribution_a58576657391f45caf61bf0748a23b098.html#a58576657391f45caf61bf0748a23b098" title="identifies if we distribute data using the first&#45;touch memory policy" alt="" coords="159,456,328,497"/>
+<area shape="rect" id="node5" href="$swdsm_8cpp_a3c8a8769158025ec9e929601b9df6439.html#a3c8a8769158025ec9e929601b9df6439" title="Prints collected statistics." alt="" coords="184,522,303,549"/>
+<area shape="rect" id="node23" href="$swdsm_8cpp_aca8a35703563223a3e182ebc897e2b40.html#aca8a35703563223a3e182ebc897e2b40" title="Global barrier for ArgoDSM &#45; needs to be called by every thread in the system that need coherent view..." alt="" coords="166,1033,321,1059"/>
+<area shape="rect" id="node4" href="$namespaceargo_1_1env_a25a08cb2d0d11432d640ec7173063339.html#a25a08cb2d0d11432d640ec7173063339" title="get the allocation policy requested by environment variable" alt="" coords="413,5,568,47"/>
+<area shape="rect" id="node6" href="$namespaceargo_1_1env_a30775a9aa41b956df7474a2c0cc317aa.html#a30775a9aa41b956df7474a2c0cc317aa" title="get the allocation block size requested by environment variable" alt="" coords="413,71,568,112"/>
+<area shape="rect" id="node7" href="$classmpi__lock_a86966dcd6fa1a4af21c9235ae60f798a.html#a86966dcd6fa1a4af21c9235ae60f798a" title="get timekeeping statistics" alt="" coords="417,136,565,177"/>
+<area shape="rect" id="node8" href="$classmpi__lock_a7f1514ea25f51841c5892e0938aab4fe.html#a7f1514ea25f51841c5892e0938aab4fe" title="get timekeeping statistics" alt="" coords="417,201,565,243"/>
+<area shape="rect" id="node9" href="$classcache__lock_a20765dc9363f22615608c3936acbea12.html#a20765dc9363f22615608c3936acbea12" title="Get the time spent waiting for the lock." alt="" coords="393,267,588,294"/>
+<area shape="rect" id="node11" href="$classmpi__lock_a62ad399ba212798ca505e57da0dbc9ce.html#a62ad399ba212798ca505e57da0dbc9ce" title="get timekeeping statistics" alt="" coords="399,319,583,360"/>
+<area shape="rect" id="node12" href="$classmpi__lock_a035137a1b22771462178ef79fb9fde92.html#a035137a1b22771462178ef79fb9fde92" title="get timekeeping statistics" alt="" coords="399,384,583,425"/>
+<area shape="rect" id="node13" href="$classmpi__lock_a918138bbc74bae70555cb03655a2a1f9.html#a918138bbc74bae70555cb03655a2a1f9" title="get timekeeping statistics" alt="" coords="401,449,580,491"/>
+<area shape="rect" id="node14" href="$classmpi__lock_a4562dec39e6bbe180b5008f3b8164475.html#a4562dec39e6bbe180b5008f3b8164475" title="get timekeeping statistics" alt="" coords="401,515,580,556"/>
+<area shape="rect" id="node15" href="$classmpi__lock_af52f3dbb6e508302f969bbdbed1c9d97.html#af52f3dbb6e508302f969bbdbed1c9d97" title="get timekeeping statistics" alt="" coords="401,580,580,621"/>
+<area shape="rect" id="node16" href="$classmpi__lock_ad843a303cc544689e6fb0091347a168b.html#ad843a303cc544689e6fb0091347a168b" title="get timekeeping statistics" alt="" coords="383,646,598,673"/>
+<area shape="rect" id="node17" href="$classmpi__lock_a143a1f1c3efe11317d21af2eefada5cf.html#a143a1f1c3efe11317d21af2eefada5cf" title="get timekeeping statistics" alt="" coords="384,697,597,723"/>
+<area shape="rect" id="node18" href="$classmpi__lock_ab507807cfafa66d924b4b0161c90a44a.html#ab507807cfafa66d924b4b0161c90a44a" title="get timekeeping statistics" alt="" coords="376,747,605,774"/>
+<area shape="rect" id="node19" href="$classmpi__lock_aaf748b1c4867b65bb4169553462bb310.html#aaf748b1c4867b65bb4169553462bb310" title="get timekeeping statistics" alt="" coords="397,798,584,825"/>
+<area shape="rect" id="node20" href="$classcache__lock_a7c2050c2d1fe11a3a2772a0305c0905e.html#a7c2050c2d1fe11a3a2772a0305c0905e" title="Get the number of times this lock was held." alt="" coords="411,849,570,891"/>
+<area shape="rect" id="node21" href="$namespaceargo_1_1env_a5b409fb87255b7e434bf833ab8598113.html#a5b409fb87255b7e434bf833ab8598113" title="get the write buffer size requested by environment variable" alt="" coords="390,915,591,942"/>
+<area shape="rect" id="node22" href="$namespaceargo_1_1env_a922830e55425dbc0b85f1184be0a7751.html#a922830e55425dbc0b85f1184be0a7751" title="get the write buffer write back size requested by environment variable" alt="" coords="407,967,575,1008"/>
+<area shape="rect" id="node10" href="$classcache__lock_a3a26cac78d1ee17663b7407b7599a9c0.html#a3a26cac78d1ee17663b7407b7599a9c0" title="Acquire a cache lock." alt="" coords="671,562,800,589"/>
+<area shape="rect" id="node24" href="$swdsm_8cpp_af056be0ae2712fab13fc590d64ef2597.html#af056be0ae2712fab13fc590d64ef2597" title="Gives number of ArgoDSM nodes." alt="" coords="428,1033,553,1059"/>
+<area shape="rect" id="node25" href="$swdsm_8cpp_aa7c3a2de6bbafdaf68fe6ceb6110ab97.html#aa7c3a2de6bbafdaf68fe6ceb6110ab97" title="Self&#45;Invalidates all memory that has potential writers." alt="" coords="425,1083,556,1110"/>
+<area shape="rect" id="node26" href="$swdsm_8cpp_aff9ea7ba7f37206d933c8dc8004dbc7b.html#aff9ea7ba7f37206d933c8dc8004dbc7b" title="Gives an index to the sharer/writer vector depending on the address." alt="" coords="668,992,803,1033"/>
+<area shape="rect" id="node27" href="$swdsm_8cpp_a7d0d0386804df222465aaa199aab92da.html#a7d0d0386804df222465aaa199aab92da" title="Gets the sharer window index based on the classification index." alt="" coords="653,1058,817,1085"/>
+<area shape="rect" id="node28" href="$classmpi__lock_a67301b26c3bb28c746e164c9f531d21d.html#a67301b26c3bb28c746e164c9f531d21d" title="acquire mpi_lock" alt="" coords="677,1109,793,1135"/>
+<area shape="rect" id="node29" href="$classmpi__lock_a38cb3649cba54a2818810c444a8b475a.html#a38cb3649cba54a2818810c444a8b475a" title="release mpi_lock" alt="" coords="669,1159,801,1186"/>
+</map>

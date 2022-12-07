@@ -1,0 +1,6 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="node1" title="Unittest that checks that pages that have been upgraded before being accessed for the first time are ..." alt="" coords="5,35,75,61"/>
+<area shape="rect" id="node2" href="$namespaceargo_a10bae1e1e60ff583384b937201a87c29.html#a10bae1e1e60ff583384b937201a87c29" title="a barrier for ArgoDSM nodes" alt="" coords="333,5,436,32"/>
+<area shape="rect" id="node3" href="$namespaceargo_a3c2fd778eb27bc574391f2ab515abe81.html#a3c2fd778eb27bc574391f2ab515abe81" title="a barrier for ArgoDSM nodes" alt="" coords="123,27,285,69"/>
+<area shape="rect" id="node4" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="149,93,259,120"/>
+</map>

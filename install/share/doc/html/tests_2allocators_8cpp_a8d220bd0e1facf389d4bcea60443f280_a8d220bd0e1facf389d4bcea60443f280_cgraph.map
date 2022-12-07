@@ -1,0 +1,7 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="node1" title="Test that checks that memory allocations are aligned to the alignment of std::max_align_t." alt="" coords="5,31,75,57"/>
+<area shape="rect" id="node2" href="$src_2allocators_2allocators_8cpp_a4e8d23563c42daa5dfce669293d7e389.html#a4e8d23563c42daa5dfce669293d7e389" title="basic collective allocation function, for C interface" alt="" coords="123,5,245,32"/>
+<area shape="rect" id="node5" href="$src_2allocators_2allocators_8cpp_a0b0fd53a1ebb7a9c44163c77ec91c853.html#a0b0fd53a1ebb7a9c44163c77ec91c853" title="dynamic allocation function, for C interface" alt="" coords="126,56,242,83"/>
+<area shape="rect" id="node3" href="$classargo_1_1allocators_1_1generic__allocator_ae0df0734076478aeaeb689cdb902497a.html#ae0df0734076478aeaeb689cdb902497a" title="Allocate memory." alt="" coords="293,23,472,65"/>
+<area shape="rect" id="node4" href="$classargo_1_1allocators_1_1generic__allocator_a3a6c4c5d83d679ce7fbfe1a50f323545.html#a3a6c4c5d83d679ce7fbfe1a50f323545" title="helper function to align a number up to the next alignment" alt="" coords="520,23,699,65"/>
+</map>

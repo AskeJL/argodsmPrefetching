@@ -1,0 +1,4 @@
+<map id="argo::backend::number_of_nodes" name="argo::backend::number_of_nodes">
+<area shape="rect" id="node1" title="get total number of ArgoDSM nodes" alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node2" href="$swdsm_8cpp_af056be0ae2712fab13fc590d64ef2597.html#af056be0ae2712fab13fc590d64ef2597" title="Gives number of ArgoDSM nodes." alt="" coords="224,13,349,39"/>
+</map>

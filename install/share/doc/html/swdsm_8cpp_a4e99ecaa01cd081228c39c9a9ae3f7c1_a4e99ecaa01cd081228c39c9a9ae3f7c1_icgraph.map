@@ -1,0 +1,6 @@
+<map id="init_mpi_cacheblock" name="init_mpi_cacheblock">
+<area shape="rect" id="node1" title="Initializes an MPI data structure for writing cache blocks over the network." alt="" coords="475,5,629,32"/>
+<area shape="rect" id="node2" href="$swdsm_8cpp_a986edbd6f804f61cd8c58dcaa51025e8.html#a986edbd6f804f61cd8c58dcaa51025e8" title="Initializes the MPI environment." alt="" coords="359,5,427,32"/>
+<area shape="rect" id="node3" href="$swdsm_8cpp_a31ba60e8ddccfa922da8d7e6a10f7b1d.html#a31ba60e8ddccfa922da8d7e6a10f7b1d" title="Initializes ArgoDSM runtime." alt="" coords="196,5,311,32"/>
+<area shape="rect" id="node4" href="$backend_8hpp_aab3cabb3e1c0b9696b339416b684f78c.html#aab3cabb3e1c0b9696b339416b684f78c" title="initialize backend" alt="" coords="5,5,148,32"/>
+</map>

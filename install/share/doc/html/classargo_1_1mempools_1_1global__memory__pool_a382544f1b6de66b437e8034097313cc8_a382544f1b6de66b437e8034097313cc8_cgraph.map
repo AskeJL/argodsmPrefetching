@@ -1,0 +1,4 @@
+<map id="argo::mempools::global_memory_pool::reset" name="argo::mempools::global_memory_pool::reset">
+<area shape="rect" id="node1" title="Resets the memory pool to the initial state instead of de&#45;allocating and (re)allocating all buffers a..." alt="" coords="5,5,181,47"/>
+<area shape="rect" id="node2" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="229,13,340,39"/>
+</map>

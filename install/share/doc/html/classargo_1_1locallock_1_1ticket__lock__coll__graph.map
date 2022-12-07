@@ -1,0 +1,6 @@
+<map id="argo::locallock::ticket_lock" name="argo::locallock::ticket_lock">
+<area shape="rect" id="node1" title="a global ticket lock" alt="" coords="5,288,200,315"/>
+<area shape="rect" id="node2" title=" " alt="" coords="31,184,174,211"/>
+<area shape="rect" id="node3" title=" " alt="" coords="36,95,169,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="83,5,122,32"/>
+</map>

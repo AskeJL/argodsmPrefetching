@@ -1,0 +1,3 @@
+<map id="argo::backend::atomic::fetch_add" name="argo::backend::atomic::fetch_add">
+<area shape="rect" id="node1" title="Atomic fetch and add operation on a global address." alt="" coords="5,29,172,71"/>
+</map>

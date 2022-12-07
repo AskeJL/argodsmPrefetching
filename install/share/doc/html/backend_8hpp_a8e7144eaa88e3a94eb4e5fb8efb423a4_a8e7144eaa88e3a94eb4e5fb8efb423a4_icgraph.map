@@ -1,0 +1,3 @@
+<map id="argo::backend::atomic::compare_exchange" name="argo::backend::atomic::compare_exchange">
+<area shape="rect" id="node1" title="Atomic CAS operation on a global address." alt="" coords="5,29,172,71"/>
+</map>

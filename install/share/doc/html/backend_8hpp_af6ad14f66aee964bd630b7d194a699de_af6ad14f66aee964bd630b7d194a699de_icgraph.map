@@ -1,0 +1,3 @@
+<map id="argo::backend::reset_stats" name="argo::backend::reset_stats">
+<area shape="rect" id="node1" title="Resets statistics for the ArgoDSM backend in use." alt="" coords="5,29,160,71"/>
+</map>

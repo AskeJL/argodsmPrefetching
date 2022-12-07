@@ -1,0 +1,14 @@
+<map id="peek_homenode" name="peek_homenode">
+<area shape="rect" id="node1" title="Gives homenode for a given address." alt="" coords="827,208,957,235"/>
+<area shape="rect" id="node2" href="$swdsm_8cpp_a93e3c7288ce47ac8b4ec8ff9f8a82435.html#a93e3c7288ce47ac8b4ec8ff9f8a82435" title="Check whether a page is either cached on the node or locally backed." alt="" coords="639,80,732,107"/>
+<area shape="rect" id="node5" href="$backend_8hpp_a0fb29a8253f0d9aefc999d93414b1758.html#a0fb29a8253f0d9aefc999d93414b1758" title="backend internal type erased function for selective acquire" alt="" coords="592,155,779,197"/>
+<area shape="rect" id="node7" href="$backend_8hpp_ac3350bde3c8baf64753e515336fad3be.html#ac3350bde3c8baf64753e515336fad3be" title="backend internal type erased function for selective release" alt="" coords="592,245,779,286"/>
+<area shape="rect" id="node9" href="$swdsm_8cpp_a92a73a9ea2009afcbef38b3e88b9ac0f.html#a92a73a9ea2009afcbef38b3e88b9ac0f" title="load into cache helper function" alt="" coords="617,311,753,337"/>
+<area shape="rect" id="node3" href="$backend_8hpp_a8189df2ded0e8e6b64477a53f80d67e8.html#a8189df2ded0e8e6b64477a53f80d67e8" title="Check if a an address is cached or node local." alt="" coords="359,29,544,56"/>
+<area shape="rect" id="node4" href="$swdsm_8cpp_adafea891224a2b1860cbc6afe9610334.html#adafea891224a2b1860cbc6afe9610334" title="Perform upgrade of page classifications." alt="" coords="398,80,505,107"/>
+<area shape="rect" id="node6" href="$backend_8hpp_aad1b8c62447de8cc06b7b4f031b77b01.html#aad1b8c62447de8cc06b7b4f031b77b01" title="causes a node to self&#45;invalidate the specified pages from its cache, and thus getting any updated val..." alt="" coords="361,155,541,197"/>
+<area shape="rect" id="node8" href="$backend_8hpp_a37c88e1409650776ddb3a33d7f2744cb.html#a37c88e1409650776ddb3a33d7f2744cb" title="causes a node to self&#45;downgrade specified pages from its cache, making all previous writes to be prop..." alt="" coords="361,245,541,286"/>
+<area shape="rect" id="node10" href="$swdsm_8cpp_adb24c11067d42b9bc8515a78a524e2c7.html#adb24c11067d42b9bc8515a78a524e2c7" title="Catches memory accesses to memory not yet cached in ArgoDSM. Launches remote requests for memory not ..." alt="" coords="416,311,487,337"/>
+<area shape="rect" id="node11" href="$swdsm_8cpp_a31ba60e8ddccfa922da8d7e6a10f7b1d.html#a31ba60e8ddccfa922da8d7e6a10f7b1d" title="Initializes ArgoDSM runtime." alt="" coords="196,311,311,337"/>
+<area shape="rect" id="node12" href="$backend_8hpp_aab3cabb3e1c0b9696b339416b684f78c.html#aab3cabb3e1c0b9696b339416b684f78c" title="initialize backend" alt="" coords="5,311,148,337"/>
+</map>

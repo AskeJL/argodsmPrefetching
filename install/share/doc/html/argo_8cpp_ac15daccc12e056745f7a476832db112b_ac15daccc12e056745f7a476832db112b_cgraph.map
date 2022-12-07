@@ -1,0 +1,4 @@
+<map id="argo_node_id" name="argo_node_id">
+<area shape="rect" id="node1" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node2" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="163,5,273,32"/>
+</map>

@@ -736,6 +736,17 @@ std::size_t align_forwards(std::size_t offset, std::size_t size) {
 }
 
 void argo_initialize(std::size_t argo_size, std::size_t cache_size) {
+	printf("aekgjkjgb\n");
+	int arr[] = {20, 34, 56, 54, 76, 87};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	// table_size of hash table as 6
+	HashMapTable ht(6);
+	for (int i = 0; i< n; i++){
+	ht.insertElement(arr[i]);}
+	// deleting element 34 from the hash table
+	ht.deleteElement(34);
+	// displaying the final data of hash table
+	ht.displayHashTable();
 	initmpi();
 	double init_start = MPI_Wtime();
 

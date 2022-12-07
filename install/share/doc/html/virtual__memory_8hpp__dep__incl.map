@@ -1,0 +1,14 @@
+<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/virtual_memory/virtual_memory.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/virtual_memory/virtual_memory.hpp">
+<area shape="rect" id="node1" title="This file provides facilities for handling virtual memory and virtual address space." alt="" coords="797,5,1055,76"/>
+<area shape="rect" id="node2" href="$argo_8cpp.html" title="This file implements some of the basic ArgoDSM calls." alt="" coords="5,124,263,180"/>
+<area shape="rect" id="node3" href="$coherence_8cpp.html" title="This file implements selective coherence mechanisms for ArgoDSM." alt="" coords="115,332,372,388"/>
+<area shape="rect" id="node4" href="$swdsm_8cpp.html" title="This file implements the MPI&#45;backend of ArgoDSM." alt="" coords="677,332,935,388"/>
+<area shape="rect" id="node5" href="$write__buffer_8hpp.html" title="This file provides an interface for the ArgoDSM write buffer." alt="" coords="339,124,596,180"/>
+<area shape="rect" id="node8" href="$singlenode_8cpp.html" title="pseudo&#45;backend implemenation for a single node ArgoDSM system" alt="" coords="671,228,951,284"/>
+<area shape="rect" id="node9" href="$signal_8hpp.html" title="This file provides facilities for handling POSIX signals, especially SIGSEGV, within ArgoDSM." alt="" coords="631,124,888,180"/>
+<area shape="rect" id="node10" href="$anonymous_8cpp.html" title="This file implements the virtual memory and virtual address handling." alt="" coords="1019,124,1279,180"/>
+<area shape="rect" id="node11" href="$memfd_8cpp.html" title="This file implements the virtual memory and virtual address handling." alt="" coords="1303,124,1560,180"/>
+<area shape="rect" id="node12" href="$shm_8cpp.html" title="This file implements the virtual memory and virtual address handling." alt="" coords="1584,124,1841,180"/>
+<area shape="rect" id="node6" href="$swdsm_8h.html" title="this is a legacy file from the ArgoDSM prototype" alt="" coords="339,228,596,284"/>
+<area shape="rect" id="node7" href="$mpi_8cpp.html" title="MPI backend implementation." alt="" coords="396,332,653,388"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="argo::backend::_selective_acquire" name="argo::backend::_selective_acquire">
+<area shape="rect" id="node1" title="backend internal type erased function for selective acquire" alt="" coords="233,29,420,71"/>
+<area shape="rect" id="node2" href="$backend_8hpp_aad1b8c62447de8cc06b7b4f031b77b01.html#aad1b8c62447de8cc06b7b4f031b77b01" title="causes a node to self&#45;invalidate the specified pages from its cache, and thus getting any updated val..." alt="" coords="5,29,185,71"/>
+</map>

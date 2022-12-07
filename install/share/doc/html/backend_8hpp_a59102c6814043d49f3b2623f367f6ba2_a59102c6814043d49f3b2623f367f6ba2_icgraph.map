@@ -1,0 +1,4 @@
+<map id="argo::backend::atomic::_exchange" name="argo::backend::atomic::_exchange">
+<area shape="rect" id="node1" title="Backend internal type erased atomic exchange function." alt="" coords="220,29,387,71"/>
+<area shape="rect" id="node2" href="$backend_8hpp_abe831501c00abf39b0519eef6789933f.html#abe831501c00abf39b0519eef6789933f" title="atomic swap operation on a global address" alt="" coords="5,29,172,71"/>
+</map>

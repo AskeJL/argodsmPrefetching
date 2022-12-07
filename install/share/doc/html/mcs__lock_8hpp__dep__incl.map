@@ -1,0 +1,7 @@
+<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/synchronization/intranode/mcs_lock.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/synchronization/intranode/mcs_lock.hpp">
+<area shape="rect" id="node1" title="MCS lock for local use." alt="" coords="287,5,544,76"/>
+<area shape="rect" id="node2" href="$cohort__lock_8hpp.html" title="This file provides a cohort lock for the ArgoDSM system." alt="" coords="120,124,377,195"/>
+<area shape="rect" id="node4" href="$lock_8cpp.html" title="This file provides unit tests for the ArgoDSM locks." alt="" coords="287,250,544,306"/>
+<area shape="rect" id="node5" href="$mcs__lock_8cpp.html" title="This file provides an MCS&#45;style lock for the ArgoDSM system." alt="" coords="453,124,711,195"/>
+<area shape="rect" id="node3" href="$cohort__lock_8cpp.html" title="This file provides a C interface for ArgoDSM&#45;based cohort locks." alt="" coords="5,243,263,313"/>
+</map>

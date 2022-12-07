@@ -1,0 +1,5 @@
+<map id="argo::get_block_size" name="argo::get_block_size">
+<area shape="rect" id="node1" title="Get the block size of the current allocation policy." alt="" coords="208,31,363,57"/>
+<area shape="rect" id="node2" href="$argo_8cpp_ad0931c5341a3b07302a3a019834280f6.html#ad0931c5341a3b07302a3a019834280f6" title="Get the block size of the current allocation policy." alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node3" href="$api_8cpp_a42290e9787e669eb9618124225ff8010.html#a42290e9787e669eb9618124225ff8010" title="Unittest that checks that argo::get_block_size() is consistent with argo::env::block_size() for all c..." alt="" coords="48,56,117,83"/>
+</map>

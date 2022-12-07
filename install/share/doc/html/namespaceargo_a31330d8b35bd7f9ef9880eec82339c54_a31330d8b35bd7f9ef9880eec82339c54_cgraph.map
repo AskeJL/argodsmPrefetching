@@ -1,0 +1,16 @@
+<map id="argo::init" name="argo::init">
+<area shape="rect" id="node1" title="initialize ArgoDSM system" alt="" coords="5,238,85,265"/>
+<area shape="rect" id="node2" href="$namespaceargo_1_1env_a30775a9aa41b956df7474a2c0cc317aa.html#a30775a9aa41b956df7474a2c0cc317aa" title="get the allocation block size requested by environment variable" alt="" coords="149,5,304,47"/>
+<area shape="rect" id="node3" href="$namespaceargo_1_1env_a25a08cb2d0d11432d640ec7173063339.html#a25a08cb2d0d11432d640ec7173063339" title="get the allocation policy requested by environment variable" alt="" coords="149,71,304,112"/>
+<area shape="rect" id="node4" href="$namespaceargo_1_1env_aa118cb239143d769e04b17d2a98d48a2.html#aa118cb239143d769e04b17d2a98d48a2" title="get the cache size requested by environment variable" alt="" coords="146,137,307,163"/>
+<area shape="rect" id="node5" href="$namespaceargo_1_1env_a3b366d9bdcdee4e6d3ff4f95ecd5d56f.html#a3b366d9bdcdee4e6d3ff4f95ecd5d56f" title="read and store environment variables used by ArgoDSM" alt="" coords="171,187,282,214"/>
+<area shape="rect" id="node6" href="$namespaceargo_1_1env_ae6176c970333c2145a90bf1280caad03.html#ae6176c970333c2145a90bf1280caad03" title="get the number of pages fetched remotely per load requested by environment variable" alt="" coords="151,238,302,265"/>
+<area shape="rect" id="node7" href="$namespaceargo_1_1env_af1be596a06fd9e786462c96442172689.html#af1be596a06fd9e786462c96442172689" title="get the memory size requested by environment variable" alt="" coords="137,289,316,315"/>
+<area shape="rect" id="node8" href="$namespaceargo_1_1env_af0546797fdfef892582c5d398e7e08a4.html#af0546797fdfef892582c5d398e7e08a4" title="get the number of MPI windows per node requested" alt="" coords="137,340,316,381"/>
+<area shape="rect" id="node9" href="$namespaceargo_1_1env_aa95264f94d7d3fa32d7f5c133818bdea.html#aa95264f94d7d3fa32d7f5c133818bdea" title="Get the requested statistics print level." alt="" coords="133,406,320,433"/>
+<area shape="rect" id="node10" href="$namespaceargo_a7525b3ba02c8025202fd1cd6756e5e4e.html#a7525b3ba02c8025202fd1cd6756e5e4e" title="reset ArgoDSM system" alt="" coords="181,457,273,483"/>
+<area shape="rect" id="node11" href="$namespaceargo_a618c32926aa8b74173868cf7e1fbcaf4.html#a618c32926aa8b74173868cf7e1fbcaf4" title="reset ArgoDSM allocators" alt="" coords="368,457,531,483"/>
+<area shape="rect" id="node12" href="$classargo_1_1mempools_1_1global__memory__pool_a382544f1b6de66b437e8034097313cc8.html#a382544f1b6de66b437e8034097313cc8" title="Resets the memory pool to the initial state instead of de&#45;allocating and (re)allocating all buffers a..." alt="" coords="582,416,758,457"/>
+<area shape="rect" id="node14" href="$classargo_1_1allocators_1_1generic__allocator_af7bba2f941e23af3efd7b06a7feeb296.html#af7bba2f941e23af3efd7b06a7feeb296" title="set memory pool" alt="" coords="579,481,761,523"/>
+<area shape="rect" id="node13" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="809,423,920,450"/>
+</map>

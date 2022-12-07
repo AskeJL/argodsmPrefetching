@@ -1,0 +1,7 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="node1" title="Unittest that checks that an STL list can be allocated globally and populated." alt="" coords="5,31,75,57"/>
+<area shape="rect" id="node2" href="$argo_8cpp_ac15daccc12e056745f7a476832db112b.html#ac15daccc12e056745f7a476832db112b" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="155,5,265,32"/>
+<area shape="rect" id="node4" href="$argo_8cpp_a9c392c7a4d9dd9c0e57814debefd9733.html#a9c392c7a4d9dd9c0e57814debefd9733" title="Number of ArgoDSM nodes being run." alt="" coords="123,56,297,83"/>
+<area shape="rect" id="node3" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="377,5,488,32"/>
+<area shape="rect" id="node5" href="$namespaceargo_a7839b1673e9af449cad0e94dce253721.html#a7839b1673e9af449cad0e94dce253721" title="Number of ArgoDSM nodes being run." alt="" coords="345,56,520,83"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="node1" title="Test the unsigned integer atomic fetch and add operation by doing lots of it." alt="" coords="5,31,75,57"/>
+<area shape="rect" id="node2" href="$namespaceargo_a10bae1e1e60ff583384b937201a87c29.html#a10bae1e1e60ff583384b937201a87c29" title="a barrier for ArgoDSM nodes" alt="" coords="159,5,261,32"/>
+<area shape="rect" id="node3" href="$namespaceargo_a7839b1673e9af449cad0e94dce253721.html#a7839b1673e9af449cad0e94dce253721" title="Number of ArgoDSM nodes being run." alt="" coords="123,56,297,83"/>
+</map>

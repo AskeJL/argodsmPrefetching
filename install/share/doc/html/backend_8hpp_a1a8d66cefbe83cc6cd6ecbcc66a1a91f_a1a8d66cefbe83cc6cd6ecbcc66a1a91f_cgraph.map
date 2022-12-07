@@ -1,0 +1,4 @@
+<map id="argo::backend::node_id" name="argo::backend::node_id">
+<area shape="rect" id="node1" title="get ArgoDSM node ID" alt="" coords="5,5,177,32"/>
+<area shape="rect" id="node2" href="$swdsm_8cpp_a8da10df179d02326f83e03174b9996e7.html#a8da10df179d02326f83e03174b9996e7" title="Gives the ArgoDSM node id for the local process." alt="" coords="225,5,363,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="argo::allocators::generic_allocator::deallocate" name="argo::allocators::generic_allocator::deallocate">
+<area shape="rect" id="node1" title="deallocate memory" alt="" coords="271,39,449,80"/>
+<area shape="rect" id="node2" href="$classargo_1_1allocators_1_1generic__allocator_af385cffc52b180a7b61b8459b2c8f869.html#af385cffc52b180a7b61b8459b2c8f869" title=" " alt="" coords="5,5,223,47"/>
+<area shape="rect" id="node3" href="$classargo_1_1allocators_1_1dynamic__allocator_a56d95163348064bb5279caae40316934.html#a56d95163348064bb5279caae40316934" title="deallocate memory" alt="" coords="21,71,207,112"/>
+</map>

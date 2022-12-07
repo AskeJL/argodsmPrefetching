@@ -1,0 +1,5 @@
+<map id="argo::data_distribution::global_ptr::node" name="argo::data_distribution::global_ptr::node">
+<area shape="rect" id="node1" title="return the home node of the value pointed to" alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node2" href="$classargo_1_1data__distribution_1_1global__ptr_ae4353680349f6abbd2cf262dace8e2f2.html#ae4353680349f6abbd2cf262dace8e2f2" title="return a pointer to the selected allocation policy" alt="" coords="223,5,392,47"/>
+<area shape="rect" id="node3" href="$namespaceargo_1_1env_a25a08cb2d0d11432d640ec7173063339.html#a25a08cb2d0d11432d640ec7173063339" title="get the allocation policy requested by environment variable" alt="" coords="440,5,595,47"/>
+</map>

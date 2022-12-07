@@ -1,0 +1,8 @@
+<map id="argo_reset_stats" name="argo_reset_stats">
+<area shape="rect" id="node1" title="Resets all ArgoDSM statistics." alt="" coords="612,88,743,115"/>
+<area shape="rect" id="node2" href="$swdsm_8cpp_adb17e929b24ae3fd6898035fce958122.html#adb17e929b24ae3fd6898035fce958122" title="Resets current ArgoDSM coherence." alt="" coords="399,47,564,73"/>
+<area shape="rect" id="node6" href="$backend_8hpp_af6ad14f66aee964bd630b7d194a699de.html#af6ad14f66aee964bd630b7d194a699de" title="Resets statistics for the ArgoDSM backend in use." alt="" coords="404,122,559,163"/>
+<area shape="rect" id="node3" href="$swdsm_8cpp_a31ba60e8ddccfa922da8d7e6a10f7b1d.html#a31ba60e8ddccfa922da8d7e6a10f7b1d" title="Initializes ArgoDSM runtime." alt="" coords="216,5,331,32"/>
+<area shape="rect" id="node5" href="$backend_8hpp_acb57f009ad65913e26147c6813eda04e.html#acb57f009ad65913e26147c6813eda04e" title="Resets current ArgoDSM coherence." alt="" coords="196,81,351,122"/>
+<area shape="rect" id="node4" href="$backend_8hpp_aab3cabb3e1c0b9696b339416b684f78c.html#aab3cabb3e1c0b9696b339416b684f78c" title="initialize backend" alt="" coords="5,5,148,32"/>
+</map>

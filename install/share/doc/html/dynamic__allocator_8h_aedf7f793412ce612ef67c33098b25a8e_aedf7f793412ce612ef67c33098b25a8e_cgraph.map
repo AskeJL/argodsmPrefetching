@@ -1,0 +1,5 @@
+<map id="dynamic_free" name="dynamic_free">
+<area shape="rect" id="node1" title="basic free function for dynamic allocations, for C interface" alt="" coords="5,13,116,39"/>
+<area shape="rect" id="node2" href="$classargo_1_1allocators_1_1generic__allocator_ab98a25e383864eecd7d602f95c49c420.html#ab98a25e383864eecd7d602f95c49c420" title="free an allocated pointer" alt="" coords="164,5,343,47"/>
+<area shape="rect" id="node3" href="$classargo_1_1allocators_1_1generic__allocator_a83b1a04add59963243bfa60b48d58db4.html#a83b1a04add59963243bfa60b48d58db4" title="helper function for deallocation" alt="" coords="391,5,605,47"/>
+</map>

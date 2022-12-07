@@ -1,0 +1,17 @@
+<map id="fitting_mpi_int" name="fitting_mpi_int">
+<area shape="rect" id="node1" title="Returns an MPI integer type that exactly matches in size the argument given." alt="" coords="511,394,627,421"/>
+<area shape="rect" id="node2" href="$backend_8hpp_ab1a7511272b2801f891b966a67b2a4dc.html#ab1a7511272b2801f891b966a67b2a4dc" title="Backend internal type erased atomic CAS function." alt="" coords="258,29,425,71"/>
+<area shape="rect" id="node4" href="$backend_8hpp_a15d2d5e1fdf93090999bce8f0307d91c.html#a15d2d5e1fdf93090999bce8f0307d91c" title="Backend internal type erased atomic CAS function." alt="" coords="222,119,461,160"/>
+<area shape="rect" id="node5" href="$backend_8hpp_a21022014311b61de767ed4d49fecc9a3.html#a21022014311b61de767ed4d49fecc9a3" title="Backend internal type erased atomic CAS function." alt="" coords="220,208,463,249"/>
+<area shape="rect" id="node6" href="$backend_8hpp_a59102c6814043d49f3b2623f367f6ba2.html#a59102c6814043d49f3b2623f367f6ba2" title="Backend internal type erased atomic exchange function." alt="" coords="258,297,425,339"/>
+<area shape="rect" id="node8" href="$backend_8hpp_a42d4f07adf3b439564928f89022b74b5.html#a42d4f07adf3b439564928f89022b74b5" title="Backend internal type erased atomic (post)increment function for signed integers." alt="" coords="258,387,425,428"/>
+<area shape="rect" id="node10" href="$backend_8hpp_ad05287a5a2d303811b5c9e7a488bda59.html#ad05287a5a2d303811b5c9e7a488bda59" title="Backend internal type erased atomic store function." alt="" coords="258,476,425,517"/>
+<area shape="rect" id="node12" href="$backend_8hpp_a9f720289269a6cf7de8c6ab7e89fac5b.html#a9f720289269a6cf7de8c6ab7e89fac5b" title="Backend internal type erased atomic load function." alt="" coords="247,565,436,607"/>
+<area shape="rect" id="node13" href="$backend_8hpp_ae76ec4647c992bfecf6309787f3dec4a.html#ae76ec4647c992bfecf6309787f3dec4a" title="Backend internal type erased atomic store function." alt="" coords="258,655,425,696"/>
+<area shape="rect" id="node15" href="$backend_8hpp_af453e2680e15d1b3b31d2baae901d182.html#af453e2680e15d1b3b31d2baae901d182" title="Backend internal type erased atomic store function." alt="" coords="244,744,439,785"/>
+<area shape="rect" id="node3" href="$backend_8hpp_a8e7144eaa88e3a94eb4e5fb8efb423a4.html#a8e7144eaa88e3a94eb4e5fb8efb423a4" title="Atomic CAS operation on a global address." alt="" coords="5,29,172,71"/>
+<area shape="rect" id="node7" href="$backend_8hpp_abe831501c00abf39b0519eef6789933f.html#abe831501c00abf39b0519eef6789933f" title="atomic swap operation on a global address" alt="" coords="5,297,172,339"/>
+<area shape="rect" id="node9" href="$backend_8hpp_afd1987dffd4e9100c88c457234f64a52.html#afd1987dffd4e9100c88c457234f64a52" title="Atomic fetch and add operation on a global address." alt="" coords="5,387,172,428"/>
+<area shape="rect" id="node11" href="$backend_8hpp_abcb3b11cf70d5b8009edfabaa08def9d.html#abcb3b11cf70d5b8009edfabaa08def9d" title="Atomic load operation on a global address." alt="" coords="5,476,172,517"/>
+<area shape="rect" id="node14" href="$backend_8hpp_a360aa0082e4b2bfe2f6c19d333ff56fa.html#a360aa0082e4b2bfe2f6c19d333ff56fa" title="Atomic store operation on a global address." alt="" coords="5,655,172,696"/>
+</map>

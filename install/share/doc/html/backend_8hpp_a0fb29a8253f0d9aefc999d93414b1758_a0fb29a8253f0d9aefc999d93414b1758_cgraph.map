@@ -1,0 +1,13 @@
+<map id="argo::backend::_selective_acquire" name="argo::backend::_selective_acquire">
+<area shape="rect" id="node1" title="backend internal type erased function for selective acquire" alt="" coords="5,165,192,207"/>
+<area shape="rect" id="node2" href="$swdsm_8cpp_aff9ea7ba7f37206d933c8dc8004dbc7b.html#aff9ea7ba7f37206d933c8dc8004dbc7b" title="Gives an index to the sharer/writer vector depending on the address." alt="" coords="255,5,389,47"/>
+<area shape="rect" id="node3" href="$swdsm_8cpp_a7d0d0386804df222465aaa199aab92da.html#a7d0d0386804df222465aaa199aab92da" title="Gets the sharer window index based on the classification index." alt="" coords="240,71,404,98"/>
+<area shape="rect" id="node4" href="$swdsm_8cpp_a59e4c59c2940cc3727debeeff4af1889.html#a59e4c59c2940cc3727debeeff4af1889" title="Gets cacheindex for a given address." alt="" coords="263,122,381,149"/>
+<area shape="rect" id="node5" href="$classmpi__lock_a67301b26c3bb28c746e164c9f531d21d.html#a67301b26c3bb28c746e164c9f531d21d" title="acquire mpi_lock" alt="" coords="264,173,380,199"/>
+<area shape="rect" id="node6" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="267,223,377,250"/>
+<area shape="rect" id="node7" href="$swdsm_8cpp_ac2a76a52d43c19cf7d5ed770e14c4409.html#ac2a76a52d43c19cf7d5ed770e14c4409" title="Gives homenode for a given address." alt="" coords="257,274,387,301"/>
+<area shape="rect" id="node11" href="$classmpi__lock_a38cb3649cba54a2818810c444a8b475a.html#a38cb3649cba54a2818810c444a8b475a" title="release mpi_lock" alt="" coords="256,325,388,351"/>
+<area shape="rect" id="node8" href="$classargo_1_1data__distribution_1_1global__ptr_a3e2cdd4d323ef91174615e27ab94e342.html#a3e2cdd4d323ef91174615e27ab94e342" title="return the home node of the value pointed to, or a default value if the page has not yet been first&#45;t..." alt="" coords="452,267,627,308"/>
+<area shape="rect" id="node9" href="$classargo_1_1data__distribution_1_1global__ptr_ae4353680349f6abbd2cf262dace8e2f2.html#ae4353680349f6abbd2cf262dace8e2f2" title="return a pointer to the selected allocation policy" alt="" coords="675,267,844,308"/>
+<area shape="rect" id="node10" href="$namespaceargo_1_1env_a25a08cb2d0d11432d640ec7173063339.html#a25a08cb2d0d11432d640ec7173063339" title="get the allocation policy requested by environment variable" alt="" coords="892,267,1047,308"/>
+</map>

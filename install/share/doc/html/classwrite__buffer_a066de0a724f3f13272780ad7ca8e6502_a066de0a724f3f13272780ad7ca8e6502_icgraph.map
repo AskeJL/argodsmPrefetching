@@ -1,0 +1,10 @@
+<map id="write_buffer::write_back_index" name="write_buffer::write_back_index">
+<area shape="rect" id="node1" title="Perform writeback of a single cached page." alt="" coords="761,35,903,76"/>
+<area shape="rect" id="node2" href="$classwrite__buffer_ad01396b3a57acdae3d76a31ae6253f48.html#ad01396b3a57acdae3d76a31ae6253f48" title="Internal implementation of flush." alt="" coords="567,13,713,39"/>
+<area shape="rect" id="node5" href="$classwrite__buffer_aa6a1c2c3aa3a7cde744bbca3b14f599a.html#aa6a1c2c3aa3a7cde744bbca3b14f599a" title="Flushes first _write_back_size elements of the ArgoDSM write buffer to memory." alt="" coords="571,64,709,105"/>
+<area shape="rect" id="node3" href="$classwrite__buffer_adbf59cdee2664f9db4a5e0dfd4f273ef.html#adbf59cdee2664f9db4a5e0dfd4f273ef" title="Helper function to call _flush." alt="" coords="372,5,519,47"/>
+<area shape="rect" id="node4" href="$classwrite__buffer_aca2e330e17a38c1cc8d8c60701ce9dd7.html#aca2e330e17a38c1cc8d8c60701ce9dd7" title="Flushes the ArgoDSM write buffer to memory." alt="" coords="185,13,324,39"/>
+<area shape="rect" id="node6" href="$classwrite__buffer_a327be1f65770b56442b1e8ee967be23d.html#a327be1f65770b56442b1e8ee967be23d" title="Internal function to add an element to the write buffer." alt="" coords="376,71,515,98"/>
+<area shape="rect" id="node7" href="$classwrite__buffer_ab5f16d0de074372b34cc4ebba9c58550.html#ab5f16d0de074372b34cc4ebba9c58550" title="Helper function to call _add." alt="" coords="185,64,324,105"/>
+<area shape="rect" id="node8" href="$classwrite__buffer_a23b0dbc463111cacbbf83b267e76ac9f.html#a23b0dbc463111cacbbf83b267e76ac9f" title="Adds a new element to the write buffer." alt="" coords="5,71,137,98"/>
+</map>

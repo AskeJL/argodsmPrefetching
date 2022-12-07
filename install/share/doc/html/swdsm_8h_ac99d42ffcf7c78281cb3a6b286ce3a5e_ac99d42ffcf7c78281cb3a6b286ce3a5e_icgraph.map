@@ -1,0 +1,11 @@
+<map id="argo_get_nodes" name="argo_get_nodes">
+<area shape="rect" id="node1" title="Gives number of ArgoDSM nodes." alt="" coords="831,42,956,69"/>
+<area shape="rect" id="node2" href="$backend_8hpp_adbe24e2ba20048f66e97670be5273631.html#adbe24e2ba20048f66e97670be5273631" title="get total number of ArgoDSM nodes" alt="" coords="612,5,783,47"/>
+<area shape="rect" id="node3" href="$swdsm_8cpp_aca8a35703563223a3e182ebc897e2b40.html#aca8a35703563223a3e182ebc897e2b40" title="Global barrier for ArgoDSM &#45; needs to be called by every thread in the system that need coherent view..." alt="" coords="620,71,775,98"/>
+<area shape="rect" id="node4" href="$swdsm_8cpp_aa954d5e0bcaee69ff6e03e697bcaf68b.html#aa954d5e0bcaee69ff6e03e697bcaf68b" title="shut down ArgoDSM system" alt="" coords="429,21,534,47"/>
+<area shape="rect" id="node5" href="$swdsm_8cpp_adb17e929b24ae3fd6898035fce958122.html#adb17e929b24ae3fd6898035fce958122" title="Resets current ArgoDSM coherence." alt="" coords="399,71,564,98"/>
+<area shape="rect" id="node9" href="$backend_8hpp_adc47b610451cff63f21d023dc31b1945.html#adc47b610451cff63f21d023dc31b1945" title="a simple collective barrier" alt="" coords="399,122,563,149"/>
+<area shape="rect" id="node6" href="$swdsm_8cpp_a31ba60e8ddccfa922da8d7e6a10f7b1d.html#a31ba60e8ddccfa922da8d7e6a10f7b1d" title="Initializes ArgoDSM runtime." alt="" coords="216,30,331,57"/>
+<area shape="rect" id="node8" href="$backend_8hpp_acb57f009ad65913e26147c6813eda04e.html#acb57f009ad65913e26147c6813eda04e" title="Resets current ArgoDSM coherence." alt="" coords="196,105,351,147"/>
+<area shape="rect" id="node7" href="$backend_8hpp_aab3cabb3e1c0b9696b339416b684f78c.html#aab3cabb3e1c0b9696b339416b684f78c" title="initialize backend" alt="" coords="5,30,148,57"/>
+</map>

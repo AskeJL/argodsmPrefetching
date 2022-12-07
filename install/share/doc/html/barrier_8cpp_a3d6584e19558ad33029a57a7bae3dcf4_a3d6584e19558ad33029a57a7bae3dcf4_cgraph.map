@@ -1,0 +1,10 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="node1" title="Unittest that checks that pages that have been upgraded and subsequently written correctly transition..." alt="" coords="5,73,75,99"/>
+<area shape="rect" id="node2" href="$namespaceargo_a10bae1e1e60ff583384b937201a87c29.html#a10bae1e1e60ff583384b937201a87c29" title="a barrier for ArgoDSM nodes" alt="" coords="369,14,472,41"/>
+<area shape="rect" id="node3" href="$namespaceargo_a3c2fd778eb27bc574391f2ab515abe81.html#a3c2fd778eb27bc574391f2ab515abe81" title="a barrier for ArgoDSM nodes" alt="" coords="123,36,285,77"/>
+<area shape="rect" id="node4" href="$namespaceargo_ab1d1a73e110d3631588ee61d1dd36002.html#ab1d1a73e110d3631588ee61d1dd36002" title="Get the ArgoDSM node id where addr is physically backed." alt="" coords="126,102,282,129"/>
+<area shape="rect" id="node8" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="149,153,259,179"/>
+<area shape="rect" id="node5" href="$classargo_1_1data__distribution_1_1global__ptr_a3e2cdd4d323ef91174615e27ab94e342.html#a3e2cdd4d323ef91174615e27ab94e342" title="return the home node of the value pointed to, or a default value if the page has not yet been first&#45;t..." alt="" coords="333,95,508,136"/>
+<area shape="rect" id="node6" href="$classargo_1_1data__distribution_1_1global__ptr_ae4353680349f6abbd2cf262dace8e2f2.html#ae4353680349f6abbd2cf262dace8e2f2" title="return a pointer to the selected allocation policy" alt="" coords="556,95,725,136"/>
+<area shape="rect" id="node7" href="$namespaceargo_1_1env_a25a08cb2d0d11432d640ec7173063339.html#a25a08cb2d0d11432d640ec7173063339" title="get the allocation policy requested by environment variable" alt="" coords="773,95,928,136"/>
+</map>

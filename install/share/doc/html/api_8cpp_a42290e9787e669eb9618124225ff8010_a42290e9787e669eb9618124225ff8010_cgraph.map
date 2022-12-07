@@ -1,0 +1,11 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="node1" title="Unittest that checks that argo::get_block_size() is consistent with argo::env::block_size() for all c..." alt="" coords="5,159,75,186"/>
+<area shape="rect" id="node2" href="$namespaceargo_1_1env_a30775a9aa41b956df7474a2c0cc317aa.html#a30775a9aa41b956df7474a2c0cc317aa" title="get the allocation block size requested by environment variable" alt="" coords="571,5,725,47"/>
+<area shape="rect" id="node3" href="$namespaceargo_a2f35b6b6e0af76fb8fb47f2031d6f58e.html#a2f35b6b6e0af76fb8fb47f2031d6f58e" title="Get the block size of the current allocation policy." alt="" coords="133,105,287,131"/>
+<area shape="rect" id="node6" href="$namespaceargo_1_1data__distribution_a1bb3f2dcecd237990e6dc67764f06860.html#a1bb3f2dcecd237990e6dc67764f06860" title="identifies if we distribute data using a cyclic memory policy" alt="" coords="563,152,733,193"/>
+<area shape="rect" id="node8" href="$namespaceargo_1_1data__distribution_a58576657391f45caf61bf0748a23b098.html#a58576657391f45caf61bf0748a23b098" title="identifies if we distribute data using the first&#45;touch memory policy" alt="" coords="563,217,733,259"/>
+<area shape="rect" id="node9" href="$namespaceargo_a7839b1673e9af449cad0e94dce253721.html#a7839b1673e9af449cad0e94dce253721" title="Number of ArgoDSM nodes being run." alt="" coords="123,261,297,287"/>
+<area shape="rect" id="node4" href="$namespaceargo_1_1data__distribution_a2a70ed49553953957c3a28aa755d7ac8.html#a2a70ed49553953957c3a28aa755d7ac8" title="based on the chosen policy, gets the policy block size" alt="" coords="345,93,515,135"/>
+<area shape="rect" id="node5" href="$classargo_1_1data__distribution_1_1base__distribution_a150661b9199cd90dbdd59c6d9d593f3d.html#a150661b9199cd90dbdd59c6d9d593f3d" title="get the backing store size per node" alt="" coords="563,71,733,127"/>
+<area shape="rect" id="node7" href="$namespaceargo_1_1env_a25a08cb2d0d11432d640ec7173063339.html#a25a08cb2d0d11432d640ec7173063339" title="get the allocation policy requested by environment variable" alt="" coords="781,185,936,227"/>
+</map>

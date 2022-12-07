@@ -1,0 +1,6 @@
+<map id="argo::delete_" name="argo::delete_">
+<area shape="rect" id="node1" title="template function to delete objects that were allocated using dynamic_new" alt="" coords="5,13,112,39"/>
+<area shape="rect" id="node2" href="$src_2allocators_2allocators_8cpp_aedf7f793412ce612ef67c33098b25a8e.html#aedf7f793412ce612ef67c33098b25a8e" title="basic free function for dynamic allocations, for C interface" alt="" coords="160,13,271,39"/>
+<area shape="rect" id="node3" href="$classargo_1_1allocators_1_1generic__allocator_ab98a25e383864eecd7d602f95c49c420.html#ab98a25e383864eecd7d602f95c49c420" title="free an allocated pointer" alt="" coords="319,5,497,47"/>
+<area shape="rect" id="node4" href="$classargo_1_1allocators_1_1generic__allocator_a83b1a04add59963243bfa60b48d58db4.html#a83b1a04add59963243bfa60b48d58db4" title="helper function for deallocation" alt="" coords="545,5,760,47"/>
+</map>

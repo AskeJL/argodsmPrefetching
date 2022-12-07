@@ -1,0 +1,6 @@
+<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/synchronization/intranode/ticket_lock.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/synchronization/intranode/ticket_lock.hpp">
+<area shape="rect" id="node1" title="This file provides a (local) ticket lock for intranode locking in the ArgoDSM system." alt="" coords="203,5,460,76"/>
+<area shape="rect" id="node2" href="$cohort__lock_8hpp.html" title="This file provides a cohort lock for the ArgoDSM system." alt="" coords="120,124,377,195"/>
+<area shape="rect" id="node4" href="$lock_8cpp.html" title="This file provides unit tests for the ArgoDSM locks." alt="" coords="287,250,544,306"/>
+<area shape="rect" id="node3" href="$cohort__lock_8cpp.html" title="This file provides a C interface for ArgoDSM&#45;based cohort locks." alt="" coords="5,243,263,313"/>
+</map>

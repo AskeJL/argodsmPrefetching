@@ -1,0 +1,10 @@
+<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/data_distribution/naive_distribution.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/data_distribution/naive_distribution.hpp">
+<area shape="rect" id="node1" title="This file implements the naive data distribution." alt="" coords="100,5,357,76"/>
+<area shape="rect" id="node2" href="$base__distribution_8hpp.html" title="This file implements the base distribution class for all the policies to derive from." alt="" coords="147,124,310,151"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,199,71,225"/>
+<area shape="rect" id="node4" title=" " alt="" coords="95,199,175,225"/>
+<area shape="rect" id="node5" title=" " alt="" coords="199,199,258,225"/>
+<area shape="rect" id="node6" href="$env_8hpp.html" title="This file provides facilities for handling environment variables." alt="" coords="282,199,383,225"/>
+<area shape="rect" id="node8" href="$types_8hpp.html" title="This file defines common types used in ArgoDSM." alt="" coords="408,199,535,225"/>
+<area shape="rect" id="node7" title=" " alt="" coords="297,273,368,300"/>
+</map>
