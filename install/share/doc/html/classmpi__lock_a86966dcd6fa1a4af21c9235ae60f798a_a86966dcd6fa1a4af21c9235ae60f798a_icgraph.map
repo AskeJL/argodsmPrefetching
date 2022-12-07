@@ -1,5 +1,0 @@
-<map id="mpi_lock::get_local_hold_time" name="mpi_lock::get_local_hold_time">
-<area shape="rect" id="node1" title="get timekeeping statistics" alt="" coords="325,5,473,47"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp_a3c8a8769158025ec9e929601b9df6439.html#a3c8a8769158025ec9e929601b9df6439" title="Prints collected statistics." alt="" coords="159,13,277,39"/>
-<area shape="rect" id="node3" href="$swdsm_8cpp_aa954d5e0bcaee69ff6e03e697bcaf68b.html#aa954d5e0bcaee69ff6e03e697bcaf68b" title="shut down ArgoDSM system" alt="" coords="5,13,111,39"/>
-</map>

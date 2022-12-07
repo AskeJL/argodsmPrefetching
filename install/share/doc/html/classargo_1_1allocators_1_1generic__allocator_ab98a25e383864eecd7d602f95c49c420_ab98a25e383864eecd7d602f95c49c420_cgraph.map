@@ -1,4 +1,0 @@
-<map id="argo::allocators::generic_allocator::free" name="argo::allocators::generic_allocator::free">
-<area shape="rect" id="node1" title="free an allocated pointer" alt="" coords="5,5,184,47"/>
-<area shape="rect" id="node2" href="$classargo_1_1allocators_1_1generic__allocator_a83b1a04add59963243bfa60b48d58db4.html#a83b1a04add59963243bfa60b48d58db4" title="helper function for deallocation" alt="" coords="232,5,447,47"/>
-</map>

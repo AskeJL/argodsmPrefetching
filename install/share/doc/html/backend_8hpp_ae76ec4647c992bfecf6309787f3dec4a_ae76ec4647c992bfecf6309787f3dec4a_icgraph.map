@@ -1,4 +1,0 @@
-<map id="argo::backend::atomic::_store" name="argo::backend::atomic::_store">
-<area shape="rect" id="node1" title="Backend internal type erased atomic store function." alt="" coords="220,29,387,71"/>
-<area shape="rect" id="node2" href="$backend_8hpp_a360aa0082e4b2bfe2f6c19d333ff56fa.html#a360aa0082e4b2bfe2f6c19d333ff56fa" title="Atomic store operation on a global address." alt="" coords="5,29,172,71"/>
-</map>

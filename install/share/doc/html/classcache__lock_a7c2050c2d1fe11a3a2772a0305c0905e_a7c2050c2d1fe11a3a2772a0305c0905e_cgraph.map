@@ -1,4 +1,0 @@
-<map id="cache_lock::get_num_locks" name="cache_lock::get_num_locks">
-<area shape="rect" id="node1" title="Get the number of times this lock was held." alt="" coords="5,5,164,47"/>
-<area shape="rect" id="node2" href="$classcache__lock_a3a26cac78d1ee17663b7407b7599a9c0.html#a3a26cac78d1ee17663b7407b7599a9c0" title="Acquire a cache lock." alt="" coords="212,13,341,39"/>
-</map>

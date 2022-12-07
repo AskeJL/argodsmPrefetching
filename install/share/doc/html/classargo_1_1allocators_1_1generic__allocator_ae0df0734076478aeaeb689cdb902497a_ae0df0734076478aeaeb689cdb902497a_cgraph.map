@@ -1,4 +1,0 @@
-<map id="argo::allocators::generic_allocator::allocate" name="argo::allocators::generic_allocator::allocate">
-<area shape="rect" id="node1" title="Allocate memory." alt="" coords="5,5,184,47"/>
-<area shape="rect" id="node2" href="$classargo_1_1allocators_1_1generic__allocator_a3a6c4c5d83d679ce7fbfe1a50f323545.html#a3a6c4c5d83d679ce7fbfe1a50f323545" title="helper function to align a number up to the next alignment" alt="" coords="232,5,411,47"/>
-</map>

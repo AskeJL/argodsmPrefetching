@@ -1,6 +1,0 @@
-<map id="TEST_P" name="TEST_P">
-<area shape="rect" id="node1" title="Unittest that checks that the barrier call works with multiple threads." alt="" coords="5,56,75,83"/>
-<area shape="rect" id="node2" href="$namespaceargo_a10bae1e1e60ff583384b937201a87c29.html#a10bae1e1e60ff583384b937201a87c29" title="a barrier for ArgoDSM nodes" alt="" coords="159,5,261,32"/>
-<area shape="rect" id="node3" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="155,56,265,83"/>
-<area shape="rect" id="node4" href="$namespaceargo_a7839b1673e9af449cad0e94dce253721.html#a7839b1673e9af449cad0e94dce253721" title="Number of ArgoDSM nodes being run." alt="" coords="123,107,297,133"/>
-</map>

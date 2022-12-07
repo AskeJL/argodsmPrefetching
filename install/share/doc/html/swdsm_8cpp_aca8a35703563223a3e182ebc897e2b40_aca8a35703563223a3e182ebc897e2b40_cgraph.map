@@ -1,9 +1,0 @@
-<map id="swdsm_argo_barrier" name="swdsm_argo_barrier">
-<area shape="rect" id="node1" title="Global barrier for ArgoDSM &#45; needs to be called by every thread in the system that need coherent view..." alt="" coords="5,71,160,98"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp_af056be0ae2712fab13fc590d64ef2597.html#af056be0ae2712fab13fc590d64ef2597" title="Gives number of ArgoDSM nodes." alt="" coords="211,46,336,73"/>
-<area shape="rect" id="node3" href="$swdsm_8cpp_aa7c3a2de6bbafdaf68fe6ceb6110ab97.html#aa7c3a2de6bbafdaf68fe6ceb6110ab97" title="Self&#45;Invalidates all memory that has potential writers." alt="" coords="208,97,339,123"/>
-<area shape="rect" id="node4" href="$swdsm_8cpp_aff9ea7ba7f37206d933c8dc8004dbc7b.html#aff9ea7ba7f37206d933c8dc8004dbc7b" title="Gives an index to the sharer/writer vector depending on the address." alt="" coords="401,5,536,47"/>
-<area shape="rect" id="node5" href="$swdsm_8cpp_a7d0d0386804df222465aaa199aab92da.html#a7d0d0386804df222465aaa199aab92da" title="Gets the sharer window index based on the classification index." alt="" coords="387,71,551,98"/>
-<area shape="rect" id="node6" href="$classmpi__lock_a67301b26c3bb28c746e164c9f531d21d.html#a67301b26c3bb28c746e164c9f531d21d" title="acquire mpi_lock" alt="" coords="411,122,527,149"/>
-<area shape="rect" id="node7" href="$classmpi__lock_a38cb3649cba54a2818810c444a8b475a.html#a38cb3649cba54a2818810c444a8b475a" title="release mpi_lock" alt="" coords="403,173,535,199"/>
-</map>

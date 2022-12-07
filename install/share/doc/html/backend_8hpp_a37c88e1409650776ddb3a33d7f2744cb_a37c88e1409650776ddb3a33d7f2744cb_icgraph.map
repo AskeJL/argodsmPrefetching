@@ -1,3 +1,0 @@
-<map id="argo::backend::selective_release" name="argo::backend::selective_release">
-<area shape="rect" id="node1" title="causes a node to self&#45;downgrade specified pages from its cache, making all previous writes to be prop..." alt="" coords="5,29,185,71"/>
-</map>

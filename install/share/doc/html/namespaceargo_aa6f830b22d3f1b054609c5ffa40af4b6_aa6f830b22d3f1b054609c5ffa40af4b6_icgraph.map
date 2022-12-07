@@ -1,7 +1,0 @@
-<map id="argo::finalize" name="argo::finalize">
-<area shape="rect" id="node1" title="shut down ArgoDSM system" alt="" coords="448,85,555,112"/>
-<area shape="rect" id="node2" href="$classargo_1_1mempools_1_1global__memory__pool_a2adeebf07ab9ba9ec2956dcf37f3abc3.html#a2adeebf07ab9ba9ec2956dcf37f3abc3" title=" " alt="" coords="221,5,400,61"/>
-<area shape="rect" id="node3" href="$argo_8cpp_aa954d5e0bcaee69ff6e03e697bcaf68b.html#aa954d5e0bcaee69ff6e03e697bcaf68b" title="shut down ArgoDSM system" alt="" coords="258,85,363,112"/>
-<area shape="rect" id="node5" href="$tests_2allocators_8cpp_a3c04138a5bfe5d72780bb7e82a18e627.html#a3c04138a5bfe5d72780bb7e82a18e627" title="The main function that runs the tests." alt="" coords="283,136,338,163"/>
-<area shape="rect" id="node4" href="$backend_8hpp_a2f1a764c586ff7c03530e974dcd2d59c.html#a2f1a764c586ff7c03530e974dcd2d59c" title="global memory space address" alt="" coords="5,85,173,112"/>
-</map>

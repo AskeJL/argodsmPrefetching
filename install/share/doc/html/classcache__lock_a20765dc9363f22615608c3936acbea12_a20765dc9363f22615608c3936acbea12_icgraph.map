@@ -1,5 +1,0 @@
-<map id="cache_lock::get_lock_time" name="cache_lock::get_lock_time">
-<area shape="rect" id="node1" title="Get the time spent waiting for the lock." alt="" coords="325,5,520,32"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp_a3c8a8769158025ec9e929601b9df6439.html#a3c8a8769158025ec9e929601b9df6439" title="Prints collected statistics." alt="" coords="159,5,277,32"/>
-<area shape="rect" id="node3" href="$swdsm_8cpp_aa954d5e0bcaee69ff6e03e697bcaf68b.html#aa954d5e0bcaee69ff6e03e697bcaf68b" title="shut down ArgoDSM system" alt="" coords="5,5,111,32"/>
-</map>

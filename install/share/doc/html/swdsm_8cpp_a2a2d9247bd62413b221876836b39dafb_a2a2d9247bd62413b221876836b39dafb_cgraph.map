@@ -1,6 +1,0 @@
-<map id="sharer_op" name="sharer_op">
-<area shape="rect" id="node1" title="Locks the correct mpi_lock_sharer, performs operation op and then unlocks the locked mpi_lock_sharer." alt="" coords="5,56,92,83"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp_a7d0d0386804df222465aaa199aab92da.html#a7d0d0386804df222465aaa199aab92da" title="Gets the sharer window index based on the classification index." alt="" coords="140,5,304,32"/>
-<area shape="rect" id="node3" href="$classmpi__lock_a67301b26c3bb28c746e164c9f531d21d.html#a67301b26c3bb28c746e164c9f531d21d" title="acquire mpi_lock" alt="" coords="164,56,280,83"/>
-<area shape="rect" id="node4" href="$classmpi__lock_a38cb3649cba54a2818810c444a8b475a.html#a38cb3649cba54a2818810c444a8b475a" title="release mpi_lock" alt="" coords="156,107,288,133"/>
-</map>

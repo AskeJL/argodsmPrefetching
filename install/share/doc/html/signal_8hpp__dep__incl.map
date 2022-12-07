@@ -1,5 +1,0 @@
-<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/signal/signal.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/signal/signal.hpp">
-<area shape="rect" id="node1" title="This file provides facilities for handling POSIX signals, especially SIGSEGV, within ArgoDSM." alt="" coords="152,5,409,61"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp.html" title="This file implements the MPI&#45;backend of ArgoDSM." alt="" coords="5,109,263,165"/>
-<area shape="rect" id="node3" href="$singlenode_8cpp.html" title="pseudo&#45;backend implemenation for a single node ArgoDSM system" alt="" coords="287,109,567,165"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="argo_acquire" name="argo_acquire">
-<area shape="rect" id="node1" title="acquire function for ArgoDSM (Acquire according to Release Consistency)" alt="" coords="5,97,112,123"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp_aa7c3a2de6bbafdaf68fe6ceb6110ab97.html#aa7c3a2de6bbafdaf68fe6ceb6110ab97" title="Self&#45;Invalidates all memory that has potential writers." alt="" coords="160,97,291,123"/>
-<area shape="rect" id="node3" href="$swdsm_8cpp_aff9ea7ba7f37206d933c8dc8004dbc7b.html#aff9ea7ba7f37206d933c8dc8004dbc7b" title="Gives an index to the sharer/writer vector depending on the address." alt="" coords="353,5,488,47"/>
-<area shape="rect" id="node4" href="$swdsm_8cpp_a7d0d0386804df222465aaa199aab92da.html#a7d0d0386804df222465aaa199aab92da" title="Gets the sharer window index based on the classification index." alt="" coords="339,71,503,98"/>
-<area shape="rect" id="node5" href="$classmpi__lock_a67301b26c3bb28c746e164c9f531d21d.html#a67301b26c3bb28c746e164c9f531d21d" title="acquire mpi_lock" alt="" coords="363,122,479,149"/>
-<area shape="rect" id="node6" href="$classmpi__lock_a38cb3649cba54a2818810c444a8b475a.html#a38cb3649cba54a2818810c444a8b475a" title="release mpi_lock" alt="" coords="355,173,487,199"/>
-</map>

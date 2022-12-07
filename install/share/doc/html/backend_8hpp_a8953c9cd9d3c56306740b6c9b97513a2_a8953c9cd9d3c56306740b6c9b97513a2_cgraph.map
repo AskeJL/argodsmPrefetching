@@ -1,4 +1,0 @@
-<map id="argo::backend::release" name="argo::backend::release">
-<area shape="rect" id="node1" title="causes a node to self&#45;downgrade its cache, making all previous writes to be propagated to the homenod..." alt="" coords="5,29,175,56"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp_ad390eb58e1be03ed6a0939fae7ebd20a.html#ad390eb58e1be03ed6a0939fae7ebd20a" title="Release function for ArgoDSM (Release according to Release Consistency)" alt="" coords="223,29,329,56"/>
-</map>

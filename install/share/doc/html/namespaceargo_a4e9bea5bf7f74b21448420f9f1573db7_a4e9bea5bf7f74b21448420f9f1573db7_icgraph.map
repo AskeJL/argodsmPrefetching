@@ -1,5 +1,0 @@
-<map id="argo::barrier_upgrade_all" name="argo::barrier_upgrade_all">
-<area shape="rect" id="node1" title="a barrier for ArgoDSM nodes" alt="" coords="237,31,423,57"/>
-<area shape="rect" id="node2" href="$synchronization_8cpp_ad2e7dd5791af5c00036fec06230d8dfa.html#ad2e7dd5791af5c00036fec06230d8dfa" title="a barrier for ArgoDSM nodes" alt="" coords="5,5,189,32"/>
-<area shape="rect" id="node3" href="$barrier_8cpp_a7b8f20222887f251e909be0271afce40.html#a7b8f20222887f251e909be0271afce40" title="Unittest that checks that pages transition to state P following an upgrade all barrier,..." alt="" coords="63,56,132,83"/>
-</map>

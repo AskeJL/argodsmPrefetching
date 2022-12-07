@@ -1,6 +1,0 @@
-<map id="argo_reset_stats" name="argo_reset_stats">
-<area shape="rect" id="node1" title="Resets all ArgoDSM statistics." alt="" coords="5,31,136,57"/>
-<area shape="rect" id="node2" href="$classmpi__lock_a79f6b3dc2765ee9189e33fbaf6b46ade.html#a79f6b3dc2765ee9189e33fbaf6b46ade" title="reset the timekeeping statistics" alt="" coords="191,5,352,32"/>
-<area shape="rect" id="node3" href="$classcache__lock_afecdbd6c7a1eb2e109b55bb90d44a6cb.html#afecdbd6c7a1eb2e109b55bb90d44a6cb" title="Clear all recorded statistics." alt="" coords="184,56,359,83"/>
-<area shape="rect" id="node4" href="$classcache__lock_a3a26cac78d1ee17663b7407b7599a9c0.html#a3a26cac78d1ee17663b7407b7599a9c0" title="Acquire a cache lock." alt="" coords="407,56,536,83"/>
-</map>

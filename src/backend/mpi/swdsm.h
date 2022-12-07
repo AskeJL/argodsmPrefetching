@@ -38,7 +38,6 @@
 #include <type_traits>
 #include <utility>
 #include <vector>
-#include <list>
 
 #include "backend/backend.hpp"
 #include "mpi_lock.hpp"
@@ -117,59 +116,6 @@ typedef struct argo_statistics_struct {
 		std::mutex ssd_time_mutex;
 } argo_statistics;
 
-class HashMapTable
-{
-    // size of the hash table
-    int table_size;
-    // Pointer to an array containing the keys
-    std::list<int> *table;
-    public:
-    // creating constructor of the above class containing all the methods
-    //HashMapTable(int key);
-    // hash function to compute the index using table_size and key
-    int hashFunction(int key) {
-
-        return (key % table_size);
-    }
-	
-	HashMapTable(int ts)
-	{
-		this->table_size = ts;
-		table = new std::list<int>[table_size];
-	}
-	// insert function to push the keys in hash table
-	void insertElement(int key)
-	{
-		int index = hashFunction(key);
-		table[index].push_back(key);
-	}
-	// delete function to delete the element from the hash table
-	void deleteElement(int key)
-	{
-		int index = hashFunction(key);
-		// finding the key at the computed index
-		std::list <int> :: iterator i;
-
-		for (i = table[index].begin(); i != table[index].end(); i++)
-		{
-			if (*i == key)
-				break;
-		}
-		// removing the key from hash table if found
-		if (i != table[index].end())
-			table[index].erase(i);
-	}
-	// display function to showcase the whole hash table
-	void displayHashTable() {
-		for (int i = 0; i<table_size; i++) {
-			std::cout<<i;
-			// traversing at the recent/ current index
-			for (auto j : table[i])
-				std::cout<< " ==> " << j;
-			std::cout<<std::endl;
-		}
-	}
-};
 /**
  * @brief Simple lock struct
  * @todo  This should be done in a separate cache class

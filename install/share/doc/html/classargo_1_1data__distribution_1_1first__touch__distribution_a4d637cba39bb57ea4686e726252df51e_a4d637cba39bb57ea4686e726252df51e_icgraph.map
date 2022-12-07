@@ -1,7 +1,0 @@
-<map id="argo::data_distribution::first_touch_distribution::update_dirs" name="argo::data_distribution::first_touch_distribution::update_dirs">
-<area shape="rect" id="node1" title="perform the necessary directory actions" alt="" coords="459,104,637,160"/>
-<area shape="rect" id="node2" href="$classargo_1_1data__distribution_1_1first__touch__distribution_a3072e6056edc945f0714bbdb775718ed.html#a3072e6056edc945f0714bbdb775718ed" title="compute home node of an address" alt="" coords="232,5,411,61"/>
-<area shape="rect" id="node3" href="$classargo_1_1data__distribution_1_1first__touch__distribution_ac1f2f15350c218a5dff4e5e06110e655.html#ac1f2f15350c218a5dff4e5e06110e655" title="compute home node of an address" alt="" coords="5,39,184,95"/>
-<area shape="rect" id="node4" href="$classargo_1_1data__distribution_1_1first__touch__distribution_aa8574afc7f9e197c51ea71df78f4908d.html#aa8574afc7f9e197c51ea71df78f4908d" title="compute the offset of ptr in the backing store on ptr&#39;s homenode" alt="" coords="232,136,411,192"/>
-<area shape="rect" id="node5" href="$classargo_1_1data__distribution_1_1first__touch__distribution_a7ba49b6dd4f8d6c226bb2fb140a59bdf.html#a7ba49b6dd4f8d6c226bb2fb140a59bdf" title="compute the offset of ptr in the backing store on ptr&#39;s homenode" alt="" coords="232,216,411,272"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/backend/mpi/write_buffer.hpp" name="/home/projectcs&#45;2022/argodsmBuffer/argodsmPrefetching/src/backend/mpi/write_buffer.hpp">
-<area shape="rect" id="node1" title="This file provides an interface for the ArgoDSM write buffer." alt="" coords="287,5,544,61"/>
-<area shape="rect" id="node2" href="$swdsm_8h.html" title="this is a legacy file from the ArgoDSM prototype" alt="" coords="287,109,544,165"/>
-<area shape="rect" id="node3" href="$coherence_8cpp.html" title="This file implements selective coherence mechanisms for ArgoDSM." alt="" coords="5,213,263,269"/>
-<area shape="rect" id="node4" href="$mpi_8cpp.html" title="MPI backend implementation." alt="" coords="287,213,544,269"/>
-<area shape="rect" id="node5" href="$swdsm_8cpp.html" title="This file implements the MPI&#45;backend of ArgoDSM." alt="" coords="568,213,825,269"/>
-</map>

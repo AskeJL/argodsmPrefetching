@@ -1,9 +1,0 @@
-<map id="argo::allocators::generic_allocator&lt; T, MemoryPool, LockType &gt;" name="argo::allocators::generic_allocator&lt; T, MemoryPool, LockType &gt;">
-<area shape="rect" id="node1" title="generic template for memory allocators" alt="" coords="107,273,310,329"/>
-<area shape="rect" id="node2" title=" " alt="" coords="13,184,188,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="187,5,225,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="139,95,273,121"/>
-<area shape="rect" id="node7" title=" " alt="" coords="330,95,453,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="213,184,426,211"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,5,44,32"/>
-</map>

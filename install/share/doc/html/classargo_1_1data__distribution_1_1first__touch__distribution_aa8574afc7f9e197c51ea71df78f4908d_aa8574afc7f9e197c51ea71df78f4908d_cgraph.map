@@ -1,5 +1,0 @@
-<map id="argo::data_distribution::first_touch_distribution::local_offset" name="argo::data_distribution::first_touch_distribution::local_offset">
-<area shape="rect" id="node1" title="compute the offset of ptr in the backing store on ptr&#39;s homenode" alt="" coords="5,5,184,61"/>
-<area shape="rect" id="node2" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="459,20,569,47"/>
-<area shape="rect" id="node3" href="$classargo_1_1data__distribution_1_1first__touch__distribution_a4d637cba39bb57ea4686e726252df51e.html#a4d637cba39bb57ea4686e726252df51e" title="perform the necessary directory actions" alt="" coords="232,37,411,93"/>
-</map>

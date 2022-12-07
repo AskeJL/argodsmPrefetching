@@ -1,4 +1,0 @@
-<map id="write_buffer::_erase_helper" name="write_buffer::_erase_helper">
-<area shape="rect" id="node1" title="Helper function to call _erase." alt="" coords="197,5,348,47"/>
-<area shape="rect" id="node2" href="$classwrite__buffer_a1fe5684a5d07bd1418b0d66663f9bfdf.html#a1fe5684a5d07bd1418b0d66663f9bfdf" title="If val exists in buffer, delete it. Else, do nothing." alt="" coords="5,13,149,39"/>
-</map>

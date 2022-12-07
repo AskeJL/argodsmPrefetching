@@ -1,8 +1,0 @@
-<map id="argo::env::mpi_windows_per_node" name="argo::env::mpi_windows_per_node">
-<area shape="rect" id="node1" title="get the number of MPI windows per node requested" alt="" coords="359,23,537,65"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp_a31ba60e8ddccfa922da8d7e6a10f7b1d.html#a31ba60e8ddccfa922da8d7e6a10f7b1d" title="Initializes ArgoDSM runtime." alt="" coords="196,5,311,32"/>
-<area shape="rect" id="node4" href="$namespaceargo_a31330d8b35bd7f9ef9880eec82339c54.html#a31330d8b35bd7f9ef9880eec82339c54" title="initialize ArgoDSM system" alt="" coords="213,56,293,83"/>
-<area shape="rect" id="node3" href="$backend_8hpp_aab3cabb3e1c0b9696b339416b684f78c.html#aab3cabb3e1c0b9696b339416b684f78c" title="initialize backend" alt="" coords="5,5,148,32"/>
-<area shape="rect" id="node5" href="$argo_8cpp_aa84680ad78c3598c30a482ff71ec6bbc.html#aa84680ad78c3598c30a482ff71ec6bbc" title="initialize ArgoDSM system" alt="" coords="37,56,116,83"/>
-<area shape="rect" id="node6" href="$tests_2allocators_8cpp_a3c04138a5bfe5d72780bb7e82a18e627.html#a3c04138a5bfe5d72780bb7e82a18e627" title="The main function that runs the tests." alt="" coords="49,107,104,133"/>
-</map>

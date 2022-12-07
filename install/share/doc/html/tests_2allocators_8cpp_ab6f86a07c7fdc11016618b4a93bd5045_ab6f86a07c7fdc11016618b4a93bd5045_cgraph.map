@@ -1,8 +1,0 @@
-<map id="TEST_F" name="TEST_F">
-<area shape="rect" id="node1" title="Unittest that checks that the global address space is at least as large as requested." alt="" coords="5,46,75,73"/>
-<area shape="rect" id="node2" href="$classargo_1_1mempools_1_1global__memory__pool_ac37f5714010e1f4b482e6c6a8a246c05.html#ac37f5714010e1f4b482e6c6a8a246c05" title="check remaining available memory in pool" alt="" coords="123,39,309,80"/>
-<area shape="rect" id="node3" href="$classargo_1_1globallock_1_1global__tas__lock_ae1a2cc75c9371ed191ac68f4e72f227e.html#ae1a2cc75c9371ed191ac68f4e72f227e" title="take the lock" alt="" coords="357,8,532,49"/>
-<area shape="rect" id="node6" href="$classargo_1_1globallock_1_1global__tas__lock_a55bd610c8555b8d986541c3f669789a2.html#a55bd610c8555b8d986541c3f669789a2" title="release the lock" alt="" coords="580,71,755,112"/>
-<area shape="rect" id="node4" href="$classargo_1_1globallock_1_1global__tas__lock_a89bbe556d8a271dd64d65b421993da00.html#a89bbe556d8a271dd64d65b421993da00" title="try to lock" alt="" coords="580,5,755,47"/>
-<area shape="rect" id="node5" href="$namespaceargo_a188a4648d6e7549bcef4cee36dcb5336.html#a188a4648d6e7549bcef4cee36dcb5336" title="A unique ArgoDSM node identifier. Counting starts from 0." alt="" coords="803,46,913,73"/>
-</map>

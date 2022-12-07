@@ -1,5 +1,0 @@
-<map id="argo::allocators::dynamic_allocator::allocate" name="argo::allocators::dynamic_allocator::allocate">
-<area shape="rect" id="node1" title="allocate Ts using the default dynamic allocator" alt="" coords="5,5,192,47"/>
-<area shape="rect" id="node2" href="$classargo_1_1allocators_1_1generic__allocator_ae0df0734076478aeaeb689cdb902497a.html#ae0df0734076478aeaeb689cdb902497a" title="Allocate memory." alt="" coords="240,5,419,47"/>
-<area shape="rect" id="node3" href="$classargo_1_1allocators_1_1generic__allocator_a3a6c4c5d83d679ce7fbfe1a50f323545.html#a3a6c4c5d83d679ce7fbfe1a50f323545" title="helper function to align a number up to the next alignment" alt="" coords="467,5,645,47"/>
-</map>

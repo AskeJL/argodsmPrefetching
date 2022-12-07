@@ -1,5 +1,0 @@
-<map id="initmpi" name="initmpi">
-<area shape="rect" id="node1" title="Initializes the MPI environment." alt="" coords="5,31,73,57"/>
-<area shape="rect" id="node2" href="$swdsm_8cpp_a4e99ecaa01cd081228c39c9a9ae3f7c1.html#a4e99ecaa01cd081228c39c9a9ae3f7c1" title="Initializes an MPI data structure for writing cache blocks over the network." alt="" coords="121,5,276,32"/>
-<area shape="rect" id="node3" href="$swdsm_8cpp_ab959fc516b83d1ea190682ae0bc7b90c.html#ab959fc516b83d1ea190682ae0bc7b90c" title="Initializes an MPI data structure for writing cache control data over the network." alt="" coords="139,56,258,83"/>
-</map>

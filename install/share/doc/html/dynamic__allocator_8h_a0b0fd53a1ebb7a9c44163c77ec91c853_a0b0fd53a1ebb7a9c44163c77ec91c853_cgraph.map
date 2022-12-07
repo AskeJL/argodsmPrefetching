@@ -1,5 +1,0 @@
-<map id="dynamic_alloc" name="dynamic_alloc">
-<area shape="rect" id="node1" title="dynamic allocation function, for C interface" alt="" coords="5,13,121,39"/>
-<area shape="rect" id="node2" href="$classargo_1_1allocators_1_1generic__allocator_ae0df0734076478aeaeb689cdb902497a.html#ae0df0734076478aeaeb689cdb902497a" title="Allocate memory." alt="" coords="169,5,348,47"/>
-<area shape="rect" id="node3" href="$classargo_1_1allocators_1_1generic__allocator_a3a6c4c5d83d679ce7fbfe1a50f323545.html#a3a6c4c5d83d679ce7fbfe1a50f323545" title="helper function to align a number up to the next alignment" alt="" coords="396,5,575,47"/>
-</map>

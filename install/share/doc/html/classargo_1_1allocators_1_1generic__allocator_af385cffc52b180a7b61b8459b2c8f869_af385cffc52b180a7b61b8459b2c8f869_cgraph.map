@@ -1,6 +1,0 @@
-<map id="argo::allocators::generic_allocator::~generic_allocator" name="argo::allocators::generic_allocator::~generic_allocator">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,223,80"/>
-<area shape="rect" id="node2" href="$classargo_1_1allocators_1_1generic__allocator_a1a2969ade518e34118290316e9fe2887.html#a1a2969ade518e34118290316e9fe2887" title="deallocate memory" alt="" coords="271,39,449,80"/>
-<area shape="rect" id="node3" href="$classargo_1_1allocators_1_1generic__allocator_a3a6c4c5d83d679ce7fbfe1a50f323545.html#a3a6c4c5d83d679ce7fbfe1a50f323545" title="helper function to align a number up to the next alignment" alt="" coords="515,5,694,47"/>
-<area shape="rect" id="node4" href="$classargo_1_1allocators_1_1generic__allocator_a83b1a04add59963243bfa60b48d58db4.html#a83b1a04add59963243bfa60b48d58db4" title="helper function for deallocation" alt="" coords="497,71,712,112"/>
-</map>

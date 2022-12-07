@@ -1,5 +1,0 @@
-<map id="argo::barrier_upgrade_writers" name="argo::barrier_upgrade_writers">
-<area shape="rect" id="node1" title="a barrier for ArgoDSM nodes" alt="" coords="215,35,377,76"/>
-<area shape="rect" id="node2" href="$synchronization_8cpp_a88dd7837a09073c0e53da31aabef6c80.html#a88dd7837a09073c0e53da31aabef6c80" title="a barrier for ArgoDSM nodes" alt="" coords="5,5,167,47"/>
-<area shape="rect" id="node3" href="$barrier_8cpp_a8933973d27c4a6e15a324ee106462146.html#a8933973d27c4a6e15a324ee106462146" title="Unittest that checks that pages that have been written transition from S/SW to S following an upgrade..." alt="" coords="51,71,121,98"/>
-</map>

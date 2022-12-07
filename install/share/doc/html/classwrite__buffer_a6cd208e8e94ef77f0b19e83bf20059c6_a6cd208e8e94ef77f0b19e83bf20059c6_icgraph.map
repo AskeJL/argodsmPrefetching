@@ -1,6 +1,0 @@
-<map id="write_buffer::size" name="write_buffer::size">
-<area shape="rect" id="node1" title="Get the size of the buffer." alt="" coords="559,13,693,39"/>
-<area shape="rect" id="node2" href="$classwrite__buffer_a327be1f65770b56442b1e8ee967be23d.html#a327be1f65770b56442b1e8ee967be23d" title="Internal function to add an element to the write buffer." alt="" coords="372,13,511,39"/>
-<area shape="rect" id="node3" href="$classwrite__buffer_ab5f16d0de074372b34cc4ebba9c58550.html#ab5f16d0de074372b34cc4ebba9c58550" title="Helper function to call _add." alt="" coords="185,5,324,47"/>
-<area shape="rect" id="node4" href="$classwrite__buffer_a23b0dbc463111cacbbf83b267e76ac9f.html#a23b0dbc463111cacbbf83b267e76ac9f" title="Adds a new element to the write buffer." alt="" coords="5,13,137,39"/>
-</map>

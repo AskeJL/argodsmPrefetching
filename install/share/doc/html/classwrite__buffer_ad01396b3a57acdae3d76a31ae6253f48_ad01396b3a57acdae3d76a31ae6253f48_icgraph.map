@@ -1,5 +1,0 @@
-<map id="write_buffer::_flush" name="write_buffer::_flush">
-<area shape="rect" id="node1" title="Internal implementation of flush." alt="" coords="387,13,533,39"/>
-<area shape="rect" id="node2" href="$classwrite__buffer_adbf59cdee2664f9db4a5e0dfd4f273ef.html#adbf59cdee2664f9db4a5e0dfd4f273ef" title="Helper function to call _flush." alt="" coords="192,5,339,47"/>
-<area shape="rect" id="node3" href="$classwrite__buffer_aca2e330e17a38c1cc8d8c60701ce9dd7.html#aca2e330e17a38c1cc8d8c60701ce9dd7" title="Flushes the ArgoDSM write buffer to memory." alt="" coords="5,13,144,39"/>
-</map>

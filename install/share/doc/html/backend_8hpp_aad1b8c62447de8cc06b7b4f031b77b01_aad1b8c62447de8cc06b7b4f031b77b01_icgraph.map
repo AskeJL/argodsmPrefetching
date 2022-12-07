@@ -1,3 +1,0 @@
-<map id="argo::backend::selective_acquire" name="argo::backend::selective_acquire">
-<area shape="rect" id="node1" title="causes a node to self&#45;invalidate the specified pages from its cache, and thus getting any updated val..." alt="" coords="5,29,185,71"/>
-</map>
