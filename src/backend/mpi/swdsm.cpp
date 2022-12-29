@@ -307,7 +307,7 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 
 	bool new_sharer = false;
 	const std::size_t fetch_size = end_index - start_index;
-	const std::size_t classification_size = used_fetch_size*2;
+	const std::size_t classification_size = fetch_size*2;
 
 	stats.prefetches += used_fetch_size;
 
@@ -390,7 +390,8 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 				/* Check local pyxis directory if we are sharer of the page */
 				local_sharers[i] = (globalSharers[classification_index_array[i]])&node_id_bit;
 				if(local_sharers[i] == 0) {
-					sharer_bit_mask[i*2] = node_id_bit;
+					/* change the state of the pages we want to load */
+					sharer_bit_mask[i*2*stride] = node_id_bit;
 					new_sharer = true;  // At least one new sharer detected
 				}
 			}
@@ -418,9 +419,9 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 			[&](std::size_t) {
 			for(std::size_t i = 0; i < used_fetch_size; i+=CACHELINE) {
 				if(pages_to_load[i]) {
-					globalSharers[classification_index_array[i]] |= remote_sharers[i*2];
+					globalSharers[classification_index_array[i]] |= remote_sharers[i*2*stride];
 					globalSharers[classification_index_array[i]] |= node_id_bit;  // Also add self
-					globalSharers[classification_index_array[i]+1] |= remote_sharers[(i*2)+1];
+					globalSharers[classification_index_array[i]+1] |= remote_sharers[(i*2*stride)+1];
 				}
 			}
 		});
@@ -432,7 +433,7 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 		if(pages_to_load[i] && !handled_pages[i]) {
 			std::fill(sharer_bit_mask.begin(), sharer_bit_mask.end(), 0);
 			const std::uintptr_t owner_id_bit =
-				remote_sharers[i*2]&node_id_inv_bit;  // remove own bit
+				remote_sharers[i*2*stride]&node_id_inv_bit;  // remove own bit
 
 			/* If there is exactly one other owner, and we are not sharer */
 			if(isZeroOrPowerOf2(owner_id_bit) && owner_id_bit != 0 && local_sharers[i] == 0) {
@@ -443,14 +444,14 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 						break;
 					}
 				}
-				sharer_bit_mask[i*2] = node_id_bit;
+				sharer_bit_mask[i*2*stride] = node_id_bit;
 
 				/* Check if any of the remaining pages need downgrading on the same node */
 				for(std::size_t j = i+CACHELINE; j < used_fetch_size; j+=CACHELINE) {
 					if(pages_to_load[j] && !handled_pages[j]) {
-						if((remote_sharers[j*2]&node_id_inv_bit) == owner_id_bit &&
+						if((remote_sharers[j*2*stride]&node_id_inv_bit) == owner_id_bit &&
 								local_sharers[j] == 0) {
-							sharer_bit_mask[j*2] = node_id_bit;
+							sharer_bit_mask[j*2*stride] = node_id_bit;
 							handled_pages[j] = true;  // Ensure these are marked as completed
 						}
 					}
