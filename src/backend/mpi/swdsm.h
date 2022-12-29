@@ -128,14 +128,22 @@ typedef struct argo_statistics_struct {
 		std::mutex ssd_time_mutex;
 } argo_statistics;
 
+/** @brief Struct containing data about PC */
+typedef struct argo_prefetch_struct {
+	/** @brief Argo Address that caused the last page fault */
+	unsigned long last_miss_page;
+	/** @brief The stride */
+	unsigned int stride;
+} argo_prefetch;
+
 /**
  * @brief Simple lock struct
  * @todo  This should be done in a separate cache class
  */
 class alignas(64) cache_lock {
 	private:
-		/** 
-		 * @brief Mutex protecting one cache block 
+		/**
+		 * @brief Mutex protecting one cache block
 		 */
 		mutable std::mutex c_mutex;
 
@@ -474,7 +482,7 @@ unsigned int argo_get_nodes();
 
 /**
  * @brief returns the maximum number of threads per ArgoDSM node (defined by NUM_THREADS)
- * @return NUM_THREADS 
+ * @return NUM_THREADS
  * @bug NUM_THREADS is not defined properly. DO NOT USE!
  */
 unsigned int getThreadCount();

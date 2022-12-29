@@ -100,6 +100,13 @@ std::uintptr_t GLOBAL_NULL;
 /** @brief  Statistics */
 argo_statistics stats;
 
+/** @brief prefetcher table
+ *
+ * The key to the map will be the RIP register value containing the
+ * address of the instruction that produced the page fault
+*/
+std::map<unsigned long, argo_prefetch> strides_table;
+
 /*First-Touch policy*/
 /** @brief  Holds the owner and backing offset of a page */
 std::uintptr_t *global_owners_dir;
@@ -192,7 +199,7 @@ std::size_t peek_offset(std::uintptr_t addr) {
  * @param aligned_access_offset memory offset to load into the cache
  * @pre aligned_access_offset must be aligned as CACHELINE*pagesize
  */
-void load_cache_entry(std::uintptr_t aligned_access_offset) {
+void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 	/* If it's not an ArgoDSM address, do not handle it */
 	if(aligned_access_offset >= size_of_all) {
 		// XXX: Must probably unlock here?
@@ -226,11 +233,51 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 		return;
 	}
 
+	argo_prefetch prefetch_data;
+	auto current_page = aligned_access_offset / pagesize;
+	prefetch_data.last_miss_page = current_page;
+
+	/* check if we have seen the PC before */
+	if (auto search = strides_table.find(pc); search != strides_table.end())
+	{ /* We did see the PC before */
+		auto last_page = search->second.last_miss_page;
+		// TODO : Figure out why putting the expression in the if expression breaks the logic
+		// Probably something to do with the unsigned type
+		int difference = current_page - last_page;
+		if (difference <= 1) {
+			prefetch_data.stride = 1;
+		} else {
+			prefetch_data.stride = current_page - last_page;
+		}
+
+	} else {
+		prefetch_data.stride = 1;
+	}
+	strides_table[pc] = prefetch_data;
+	unsigned long stride = prefetch_data.stride;
+
+	/* 219760 */
+	/* define the contiguous range of pages to fetch according to the loadsize
+	   and the stride */
+	std::size_t fetch_range = stride * (load_size - 1) + 1;
+	/* defined the acually used size of stride pages */
+	std::size_t used_fetch_size = 1;
+
+	/* check whether the fetch_range is larger than the limit */
+	if (fetch_range >= load_size*2)
+	{
+		fetch_range = load_size*2 - 1;
+	}
+
+	/* TODO: if the fetch_range is beyond the limit, we use mutilple MPI_Get() */
+
+	char buff[1024];
+
 	/* Adjust end_index to ensure the whole chunk to fetch is on the same node */
-	for(std::size_t i = start_index+CACHELINE, p = CACHELINE;
-					i < start_index+load_size;
-					i+=CACHELINE, p+=CACHELINE) {
-		const std::uintptr_t temp_addr = aligned_access_offset + p*block_size;
+	for(std::size_t i = start_index+(CACHELINE*stride), p = CACHELINE;
+					i < start_index+fetch_range;
+					i += (CACHELINE * stride), p += CACHELINE) {
+		const std::uintptr_t temp_addr = aligned_access_offset + ((p*stride) * block_size);
 		/* Increase end_index if it is within bounds and on the same node */
 		if(temp_addr < size_of_all && i < cachesize) {
 			const argo::node_id_t temp_node = peek_homenode(temp_addr);
@@ -240,10 +287,11 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 			const std::size_t temp_data_win_index = get_data_win_index(temp_offset);
 
 			if(temp_node == load_node &&
-					temp_offset == (load_offset + p*block_size) &&
+					temp_offset == (load_offset + ((p*stride) * block_size)) &&
 					temp_sharer_win_index == load_sharer_win_index &&
 					temp_data_win_index == load_data_win_index) {
-				end_index+=CACHELINE;
+				end_index += (CACHELINE * stride);
+				used_fetch_size += 1;
 			} else {
 				break;
 			}
@@ -253,21 +301,25 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 		}
 	}
 
+	int size = sprintf(buff, "pc: %lx loadnode: %d page: %ld start_index: %ld fetch_range: %ld end_index: %ld stride : %ld used_fetch_size: %ld\n", pc, load_node,
+		current_page, start_index, fetch_range, end_index, stride, used_fetch_size);
+	write(fileno(stderr), buff, (size + 1) * sizeof(char));
+
 	bool new_sharer = false;
 	const std::size_t fetch_size = end_index - start_index;
-	const std::size_t classification_size = fetch_size*2;
+	const std::size_t classification_size = used_fetch_size*2;
 
-	stats.prefetches += fetch_size;
+	stats.prefetches += used_fetch_size;
 
 	/* For each page to load, true if page should be cached else false */
-	std::vector<bool> pages_to_load(fetch_size);
+	std::vector<bool> pages_to_load(used_fetch_size);
 	/* For each page to update in the cache, true if page has
 	 * already been handled else false */
-	std::vector<bool> handled_pages(fetch_size);
+	std::vector<bool> handled_pages(used_fetch_size);
 	/* Contains classification index for each page to load */
-	std::vector<std::size_t> classification_index_array(fetch_size);
+	std::vector<std::size_t> classification_index_array(used_fetch_size);
 	/* Store sharer state from local node temporarily */
-	std::vector<std::uintptr_t> local_sharers(fetch_size);
+	std::vector<std::uintptr_t> local_sharers(used_fetch_size);
 	/* Store content of remote Pyxis directory temporarily */
 	std::vector<std::uintptr_t> remote_sharers(classification_size);
 	/* Store updates to be made to remote Pyxis directory */
@@ -276,9 +328,13 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 	std::vector<char> temp_data(fetch_size*pagesize);
 
 	/* Write back existing cache entries if needed */
-	for(std::size_t idx = start_index, p = 0; idx < end_index; idx+=CACHELINE, p+=CACHELINE) {
+	/* NOTE : p is the index for pages_to_load, which incremented by 1
+	 * idx is the index for cachecontrol, which incrementd by stride
+	 */
+	for(std::size_t idx = start_index, p = 0; idx < end_index;
+					idx += (CACHELINE*stride), p+=CACHELINE) {
 		/* Address and pointer to the data being loaded */
-		const std::size_t temp_addr = aligned_access_offset + p*block_size;
+		const std::size_t temp_addr = aligned_access_offset + ((p*stride) * block_size);
 
 		if(cache_locks[idx].try_lock() || idx == start_index) {
 			/* Skip updating pages that are already present and valid in the cache */
@@ -312,15 +368,14 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 			cacheControl[idx].state = INVALID;
 			cacheControl[idx].tag = temp_addr;
 			cacheControl[idx].dirty = CLEAN;
-			cacheControl[idx].prefetch_state = NOT_PREFETCHED;
 			vm::map_memory(temp_ptr, block_size, pagesize*idx, PROT_NONE);
 			mprotect(old_ptr, block_size, PROT_NONE);
 		}
 	}
 
 	/* Initialize classification_index_array */
-	for(std::size_t i = 0; i < fetch_size; i+=CACHELINE) {
-		const std::size_t temp_addr = aligned_access_offset + i*block_size;
+	for(std::size_t i = 0; i < used_fetch_size; i+=CACHELINE) {
+		const std::size_t temp_addr = aligned_access_offset + ((i*stride) * block_size);
 		classification_index_array[i] = get_classification_index(temp_addr);
 	}
 
@@ -330,7 +385,7 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 	/* Get globalSharers info from local node and add self to it */
 	sharer_op(MPI_LOCK_SHARED, workrank, classification_index_array[0],
 			[&](std::size_t) {
-		for(std::size_t i = 0; i < fetch_size; i+=CACHELINE) {
+		for(std::size_t i = 0; i < used_fetch_size; i+=CACHELINE) {
 			if(pages_to_load[i]) {
 				/* Check local pyxis directory if we are sharer of the page */
 				local_sharers[i] = (globalSharers[classification_index_array[i]])&node_id_bit;
@@ -361,7 +416,7 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 	/* Register the received remote globalSharers information locally */
 	sharer_op(MPI_LOCK_EXCLUSIVE, workrank, classification_index_array[0],
 			[&](std::size_t) {
-			for(std::size_t i = 0; i < fetch_size; i+=CACHELINE) {
+			for(std::size_t i = 0; i < used_fetch_size; i+=CACHELINE) {
 				if(pages_to_load[i]) {
 					globalSharers[classification_index_array[i]] |= remote_sharers[i*2];
 					globalSharers[classification_index_array[i]] |= node_id_bit;  // Also add self
@@ -372,7 +427,7 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 
 	/* If any owner of a page we loaded needs to downgrade from private
 	 * to shared, we need to notify it */
-	for(std::size_t i = 0; i < fetch_size; i += CACHELINE) {
+	for(std::size_t i = 0; i < used_fetch_size; i += CACHELINE) {
 		/* Skip pages that are not loaded or already handled */
 		if(pages_to_load[i] && !handled_pages[i]) {
 			std::fill(sharer_bit_mask.begin(), sharer_bit_mask.end(), 0);
@@ -391,7 +446,7 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 				sharer_bit_mask[i*2] = node_id_bit;
 
 				/* Check if any of the remaining pages need downgrading on the same node */
-				for(std::size_t j = i+CACHELINE; j < fetch_size; j+=CACHELINE) {
+				for(std::size_t j = i+CACHELINE; j < used_fetch_size; j+=CACHELINE) {
 					if(pages_to_load[j] && !handled_pages[j]) {
 						if((remote_sharers[j*2]&node_id_inv_bit) == owner_id_bit &&
 								local_sharers[j] == 0) {
@@ -421,13 +476,13 @@ void load_cache_entry(std::uintptr_t aligned_access_offset) {
 	mpi_lock_data[win_index][load_node].unlock(load_node, data_windows[win_index][load_node]);
 
 	/* Update the cache */
-	for(std::size_t idx = start_index, p = 0; idx < end_index; idx+=CACHELINE, p+=CACHELINE) {
+	for(std::size_t idx = start_index, p = 0; idx < end_index; idx += (CACHELINE*stride), p+=CACHELINE) {
 		/* Update only the pages necessary */
 		if(pages_to_load[p]) {
 			/* Insert the data in the node cache */
-			memcpy(&cacheData[idx*block_size], &temp_data[p*block_size], block_size);
+			memcpy(&cacheData[idx*block_size], &temp_data[p*block_size*stride], block_size);
 
-			const std::size_t temp_addr = aligned_access_offset + p*block_size;
+			const std::size_t temp_addr = aligned_access_offset + ((p*stride) * block_size);
 			void* temp_ptr = static_cast<char*>(startAddr) + temp_addr;
 
 			/* If this is the first time inserting in to this index, perform vm map */
@@ -495,6 +550,9 @@ void handler(int sig, siginfo_t *si, void *context) {
 	/* Assign correct type to the miss */
 	miss_type = (err_num & X86_PF_WRITE) ? sig::access_type::write : sig::access_type::read;
 #endif /* REG_ERR */
+
+	ucontext_t *ctx_pc = (ucontext_t*)context;
+	unsigned long pc = ctx_pc->uc_mcontext.gregs[REG_RIP];
 
 	/* align access offset to cacheline */
 	const std::size_t aligned_access_offset = align_backwards(access_offset, CACHELINE*pagesize);
@@ -616,6 +674,18 @@ void handler(int sig, siginfo_t *si, void *context) {
 		assert(cacheControl[startIndex].state == VALID);
 		assert(cacheControl[startIndex].tag == aligned_access_offset);
 
+		/* Check if we have seen the PC before */
+		if (auto search = strides_table.find(pc); search != strides_table.end())
+		{
+			/* We did see the PC before */
+			argo_prefetch prefetch_data;
+			auto current_page = aligned_access_offset / pagesize;
+			prefetch_data.last_miss_page = current_page;
+
+			prefetch_data.stride = search->second.stride;
+			strides_table[pc] = prefetch_data;
+		}
+
 		cacheControl[startIndex].prefetch_state = USED_PREFETCHED;
 		mprotect(aligned_access_ptr, pagesize*CACHELINE, PROT_READ);
 		stats.prefetches_used.fetch_add(1);
@@ -628,7 +698,7 @@ void handler(int sig, siginfo_t *si, void *context) {
 
 	/* Fetch the correct page if necessary */
 	if(state == INVALID || (tag != aligned_access_offset && tag != GLOBAL_NULL)) {
-		load_cache_entry(aligned_access_offset);
+		load_cache_entry(pc, aligned_access_offset);
 		performed_load = true;
 	}
 
