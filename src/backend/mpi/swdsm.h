@@ -38,6 +38,7 @@
 #include <type_traits>
 #include <utility>
 #include <vector>
+#include<list>
 
 #include "backend/backend.hpp"
 #include "mpi_lock.hpp"
@@ -53,6 +54,11 @@
 #define NUM_THREADS 128
 #endif
 
+#ifndef TRACE_SIZE
+/** @brief Number of traces stored in the trace list */
+#define TRACE_SIZE 1024
+#endif
+
 /** @brief Read a value and always get the latest - 'Read-Through' */
 #ifdef __cplusplus
 #define ACCESS_ONCE(x) (*static_cast<std::remove_reference<decltype(x)>::type volatile *>(&(x)))
@@ -66,6 +72,7 @@
 /** @brief Wrapper for unsigned char - basically a byte */
 typedef unsigned char argo_byte;
 
+
 /** @brief Struct for global cache control data / directory */
 typedef struct myControlData {
 		/** @brief Coherence state, basically only Valid/Invalid now */
@@ -74,7 +81,28 @@ typedef struct myControlData {
 		argo_byte dirty;     // is this locally dirty?
 		/** @brief Tracks address of page */
 		std::uintptr_t tag;  // address of global page in distr memory
+		/** @brief State for Prefetching */
+		argo_byte prefetch_state; // P | NP | UP
 } control_data;
+
+/** @brief Simple PC trace struct */
+typedef struct argo_pc_trace_struct {
+		/** @brief RIP register value containing the
+		address of the instruction that produced the page fault */
+		unsigned long pc_value;
+		/** @brief Argo Address that caused the page fault */
+		unsigned long miss_address;
+		/** @brief Home node of missed address */
+		unsigned int homenode;
+} argo_trace;
+
+/** @brief Prefetch PC struct */
+typedef struct argo_pc_struct {
+		/** @brief Argo Address that caused the last page fault */
+		unsigned long last_miss_address;
+		/** @brief The stride */
+		unsigned int stride;
+} argo_prefetch;
 
 /** @brief Struct containing statistics */
 typedef struct argo_statistics_struct {
@@ -102,6 +130,16 @@ typedef struct argo_statistics_struct {
 		std::atomic<std::size_t> write_misses;
 		/** @brief Number of loads */
 		std::atomic<std::size_t> read_misses;
+		/** @brief Number of pages prefetched */
+		std::atomic<std::size_t> prefetches;
+		/** @brief Number of pages prefetched that were update */
+		std::atomic<std::size_t> prefetches_updated;
+		/** @brief Number of pages prefetched that were used */
+		std::atomic<std::size_t> prefetches_used;
+		/** @brief Time for end of initialize end time*/
+		std::uint64_t initialize_end_time;
+		/** @brief Time for start of argo_finalize method*/
+		std::uint64_t argo_finalize_start_time;
 		/** @brief Number of barriers executed */
 		std::size_t barriers;
 		/** @brief Number of locks */
@@ -114,16 +152,156 @@ typedef struct argo_statistics_struct {
 		double ssd_time;
 		/** @brief Mutex to update ssd_time */
 		std::mutex ssd_time_mutex;
+		/** @brief The last PC's*/
+		//unsigned long* pcs;
 } argo_statistics;
 
+class HashMapTable
+{
+	/** @brief mutex to protect buffer */
+	mutable std::mutex buffer_mutex;
+
+	public:
+		// size of the hash table
+		const static int table_size = 32;
+		// Pointer to an array containing the keys
+		std::size_t addr_array[table_size];
+		std::string page_array[table_size];
+		// creating constructor of the above class containing all the methods
+		HashMapTable(){
+			//std::scoped_lock lock_other{buffer_mutex};
+			std::fill(addr_array, addr_array + table_size, -1);
+			std::cout << "filled the array" << std::endl;
+		}
+		// hash function to compute the index using table_size and key
+		long long int hashFunction(long long int key) {
+			return (key % table_size);
+		}
+
+	private:
+		unsigned int hash_size_t(size_t x) {
+			x = ((x >> 16) ^ x) * 0x45d9f3b;
+			x = ((x >> 16) ^ x) * 0x45d9f3b;
+			x = (x >> 16) ^ x;
+			return x;
+		}
+
+		long long int generateIntFromString(std::size_t key) {
+			std::size_t hash = hash_size_t(key);
+			//std::cout << "size t hash: " << str_hash << "int hash: " << abs(static_cast<int>(str_hash)) << std::endl;
+			return hash;
+		}
+
+		int getIndex(std::size_t value) {
+			return hashFunction(generateIntFromString(value));
+		}
+	public:
+		// insert function to push the keys in hash table
+		void insertElement(std::size_t addr, std::string page)
+		{	
+			std::cout << "insertElement before lock " << std::endl;
+			std::lock_guard<std::mutex> lock(buffer_mutex);
+			//std::scoped_lock lock_other{buffer_mutex};
+			int index = getIndex(addr);
+			//	std::cout << "index is " << index << std::endl;
+			addr_array[index]= addr;
+			page_array[index] = page;
+			std::cout << "insertElement releasing lock " << std::endl;
+		}
+		// delete function to delete the element from the hash table
+		void deleteByAddr(std::size_t addr)
+		{
+			// try{
+			// std::scoped_lock lock_other{buffer_mutex};
+			std::cout << "deleteByAddr before lock " << std::endl;
+			std::lock_guard<std::mutex> lock(buffer_mutex);
+			int index = getIndex(addr);
+			// finding the key at the computed index
+			deleteByIndex(index);
+			std::cout << "deleteByAddr releasing lock " << std::endl;
+		}
+		void deleteByIndex(int index)
+		{
+			addr_array[index]= -1;
+			page_array[index] = "";
+		}
+		int searchElement(std::size_t addr)
+		{
+			// std::scoped_lock lock_other{buffer_mutex};
+			std::cout << "searchElement before lock " << std::endl;
+			std::lock_guard<std::mutex> lock(buffer_mutex);
+			int index = getIndex(addr);
+			if (addr == addr_array[index]){
+				std::cout << "searchElement releasing lock " << std::endl;
+				return index;
+			}
+			else {
+				std::cout << "searchElement releasing lock " << std::endl;
+				return -1;
+			}
+		}
+		void* getPageAddrPtr(std::size_t addr){
+			// std::scoped_lock lock_other{buffer_mutex};
+			std::cout << "getPageAddrPtr before lock " << std::endl;
+			std::lock_guard<std::mutex> lock(buffer_mutex);
+			int index = getIndex(addr);
+			// finding the key at the computed index
+			if (addr == addr_array[index]){
+				std::cout << "getPageAddrPtr releasing lock " << std::endl;
+				return &page_array[index];
+				
+			}
+			else {
+				std::cout << "getPageAddrPtr releasing lock " << std::endl;
+				return nullptr;
+			}
+		}
+		// display function to showcase the whole hash table
+		void displayHashTable() {
+			// std::scoped_lock lock_other{buffer_mutex};
+			std::lock_guard<std::mutex> lock(buffer_mutex);
+			std::cout << "Hash table: " << std::endl;
+			for (int i = 0; i < table_size; i++) {
+				if (page_array[i] != ""){
+					std::cout << i << " : " << addr_array[i] << " : " << page_array[i] << std::endl;
+				}
+			}
+			std::cout << "Done printing hash table"<< std::endl;
+			
+		}
+
+		void invalidate() {
+			// std::scoped_lock lock_other{buffer_mutex};
+			std::cout << "invalidate before lock " << std::endl;
+			std::lock_guard<std::mutex> lock(buffer_mutex);
+			for(int i = 0; i < table_size; i++){
+				//std::uintptr_t distrAddr = addr_array[i];    // get the address 
+				// std::uintptr_t lineAddr = distrAddr/(CACHELINE*pagesize);
+				// lineAddr*=(pagesize*CACHELINE);
+				// std::size_t classidx = get_classification_index(lineAddr);
+				
+				// if(// node is single writer
+				// 	(globalSharers[classidx+1] == id) ||		
+				// 	// No writer and assert that the node is a sharer
+				// 	((globalSharers[classidx+1] == 0) && ((globalSharers[classidx]&id) == id))
+				// ) {
+				// 	/* nothing - we keep the pages, SD is done in flushWB */
+				// } else {
+					deleteByIndex(i);
+					
+				//}
+			}
+		std::cout << "invalidate releasing lock " << std::endl;
+		}
+};
 /**
  * @brief Simple lock struct
  * @todo  This should be done in a separate cache class
  */
 class alignas(64) cache_lock {
 	private:
-		/** 
-		 * @brief Mutex protecting one cache block 
+		/**
+		 * @brief Mutex protecting one cache block
 		 */
 		mutable std::mutex c_mutex;
 
@@ -252,6 +430,14 @@ static const argo_byte DIRTY = 3;
 static const argo_byte WRITER = 4;
 /** @brief Constant for reader states */
 static const argo_byte READER = 5;
+
+/*constants for prefetch state values*/
+/** @brief Constant for Not A Prefetch states */
+static const argo_byte NOT_PREFETCHED = 0;
+/** @brief Constant for Prefetched states */
+static const argo_byte PREFETCHED = 1;
+/** @brief Constant for Prefetched and Used states */
+static const argo_byte USED_PREFETCHED = 2;
 
 /**
  * @brief The size of a hardware memory page
@@ -454,7 +640,7 @@ unsigned int argo_get_nodes();
 
 /**
  * @brief returns the maximum number of threads per ArgoDSM node (defined by NUM_THREADS)
- * @return NUM_THREADS 
+ * @return NUM_THREADS
  * @bug NUM_THREADS is not defined properly. DO NOT USE!
  */
 unsigned int getThreadCount();
@@ -535,6 +721,13 @@ std::size_t get_classification_index(std::uintptr_t addr);
  * @todo This should be moved into a dedicated cache class
  */
 bool _is_cached(std::uintptr_t addr);
+
+/**
+ * @brief Check whether a page is inside the prefetch buffer
+ * @param addr Address in the global address space
+ * @return true if addr in prefetch buffer
+ */
+bool _is_buffered(std::uintptr_t addr);
 
 /**
  * @brief Locks the correct mpi_lock_sharer, performs operation
