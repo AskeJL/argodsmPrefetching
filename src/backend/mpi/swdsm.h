@@ -104,6 +104,8 @@ typedef struct argo_statistics_struct {
 		std::atomic<std::size_t> write_misses;
 		/** @brief Number of loads */
 		std::atomic<std::size_t> read_misses;
+		/** @brief Number of total misses */
+		std::atomic<std::size_t> remote_misses;
 		/** @brief Number of pages prefetched */
 		std::atomic<std::size_t> prefetches;
 		/** @brief Number of pages prefetched that were update */
@@ -134,6 +136,8 @@ typedef struct argo_prefetch_struct {
 	unsigned long last_miss_page;
 	/** @brief The stride */
 	unsigned int stride;
+	/** @brief The confidence */
+	unsigned int confidence;
 } argo_prefetch;
 
 /**
@@ -280,6 +284,11 @@ static const argo_byte NOT_PREFETCHED = 0;
 static const argo_byte PREFETCHED = 1;
 /** @brief Constant for Prefetched and Used states */
 static const argo_byte USED_PREFETCHED = 2;
+
+/** @brief Maximum value for confidence */
+static const unsigned int MAX_CONFIDENCE = 5;
+/** @brief Threshold value for confidence */
+static const unsigned int MIN_CONFIDENCE = 3;
 
 /**
  * @brief The size of a hardware memory page

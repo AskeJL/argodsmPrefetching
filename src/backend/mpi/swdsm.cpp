@@ -52,6 +52,9 @@ std::vector<cache_lock> cache_locks;
 /** @brief Mutex ensuring that only one thread can perform node-wide synchronization */
 std::shared_mutex sync_lock;
 
+/** @brief Mutex ensuring that only one thread can perform node-wide synchronization */
+std::shared_mutex prefetch_sync_lock;
+
 /*Writebuffer*/
 /** @brief A write buffer storing cache indices */
 write_buffer<std::size_t>* argo_write_buffer;
@@ -196,6 +199,7 @@ std::size_t peek_offset(std::uintptr_t addr) {
 /*Loading and Prefetching*/
 /**
  * @brief load into cache helper function
+ * @param pc Program Counter that caused the page fault leading to page fetch
  * @param aligned_access_offset memory offset to load into the cache
  * @pre aligned_access_offset must be aligned as CACHELINE*pagesize
  */
@@ -241,22 +245,43 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 	if (auto search = strides_table.find(pc); search != strides_table.end())
 	{ /* We did see the PC before */
 		auto last_page = search->second.last_miss_page;
-		// TODO : Figure out why putting the expression in the if expression breaks the logic
-		// Probably something to do with the unsigned type
+		int old_stride = prefetch_data.stride;
+		unsigned int old_confidence = prefetch_data.confidence;
 		int difference = current_page - last_page;
+
+		/* Increse the confidence if see the stride again
+		   otherwise, decrease the confidence */
+		if (difference == old_stride && old_confidence < MAX_CONFIDENCE) {
+			prefetch_data.confidence += 1;
+		} else if (difference != old_stride && old_confidence > 0) {
+			prefetch_data.confidence -= 1;
+		}
+
+		/* Set stride if the difference is greater than 1 */
 		if (difference <= 1) {
 			prefetch_data.stride = 1;
 		} else {
-			prefetch_data.stride = current_page - last_page;
+			prefetch_data.stride = difference;
 		}
 
 	} else {
+		prefetch_data.confidence = 0;
 		prefetch_data.stride = 1;
 	}
-	strides_table[pc] = prefetch_data;
-	unsigned long stride = prefetch_data.stride;
 
-	/* 219760 */
+	std::unique_lock stride_table_lock(prefetch_sync_lock);
+	strides_table[pc] = prefetch_data;
+	stride_table_lock.unlock();
+
+	/* Set the stride to fetch based on confidence for the PC */
+	unsigned long stride = 1;
+
+
+	if (prefetch_data.confidence > MIN_CONFIDENCE)
+	{
+		stride = prefetch_data.stride;
+	}
+
 	/* define the contiguous range of pages to fetch according to the loadsize
 	   and the stride */
 	std::size_t fetch_range = stride * (load_size - 1) + 1;
@@ -270,8 +295,6 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 	}
 
 	/* TODO: if the fetch_range is beyond the limit, we use mutilple MPI_Get() */
-
-	char buff[1024];
 
 	/* Adjust end_index to ensure the whole chunk to fetch is on the same node */
 	for(std::size_t i = start_index+(CACHELINE*stride), p = CACHELINE;
@@ -300,10 +323,6 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 			break;
 		}
 	}
-
-	int size = sprintf(buff, "pc: %lx loadnode: %d page: %ld start_index: %ld fetch_range: %ld end_index: %ld stride : %ld used_fetch_size: %ld\n", pc, load_node,
-		current_page, start_index, fetch_range, end_index, stride, used_fetch_size);
-	write(fileno(stderr), buff, (size + 1) * sizeof(char));
 
 	bool new_sharer = false;
 	const std::size_t fetch_size = end_index - start_index;
@@ -681,15 +700,40 @@ void handler(int sig, siginfo_t *si, void *context) {
 			/* We did see the PC before */
 			argo_prefetch prefetch_data;
 			auto current_page = aligned_access_offset / pagesize;
+			auto last_page = search->second.last_miss_page;
+			int old_stride = prefetch_data.stride;
+			unsigned int old_confidence = prefetch_data.confidence;
+			int difference = current_page - last_page;
+
+			/* Increse the confidence if see the stride again
+			otherwise, decrease the confidence */
+			if (difference == old_stride && old_confidence < MAX_CONFIDENCE) {
+				prefetch_data.confidence += 1;
+			} else if (difference != old_stride && old_confidence > 0) {
+				prefetch_data.confidence -= 1;
+			}
+
+			/* Set stride if the difference is greater than 1 */
+			if (difference <= 1) {
+				prefetch_data.stride = 1;
+			} else {
+				prefetch_data.stride = difference;
+			}
+
 			prefetch_data.last_miss_page = current_page;
 
-			prefetch_data.stride = search->second.stride;
+			/* Update PC's entry in stride_table */
+			std::unique_lock stride_table_lock(prefetch_sync_lock);
 			strides_table[pc] = prefetch_data;
+			stride_table_lock.unlock();
 		}
+
+		/* increase the total remote misses */
+		stats.remote_misses.fetch_add(1);
+		stats.prefetches_used.fetch_add(1);
 
 		cacheControl[startIndex].prefetch_state = USED_PREFETCHED;
 		mprotect(aligned_access_ptr, pagesize*CACHELINE, PROT_READ);
-		stats.prefetches_used.fetch_add(1);
 		if (miss_type == sig::access_type::read)
 		{
 			cache_locks[startIndex].unlock();
@@ -699,6 +743,8 @@ void handler(int sig, siginfo_t *si, void *context) {
 
 	/* Fetch the correct page if necessary */
 	if(state == INVALID || (tag != aligned_access_offset && tag != GLOBAL_NULL)) {
+		/* increase the total remote misses */
+		stats.remote_misses.fetch_add(1);
 		load_cache_entry(pc, aligned_access_offset);
 		performed_load = true;
 	}
@@ -1471,7 +1517,7 @@ void print_statistics() {
 		}
 
 		/* Print general information */
-		printf("\n#################################" YEL" ArgoDSM statistics " RESET "##################################\n");
+		printf("\n#################################" YEL" ArgoDSM (Stride Prefetcher) statistics " RESET "##################################\n");
 		printf("#  memory size: %12.2f%s  page size (p): %10dB   cache size: %13ldp\n",
 				mem_size_readable, sizes[order], pagesize, cachesize);
 		printf("#  write buffer size: %6ldp   write back size: %8ldp   CACHELINE: %14ldp\n",
@@ -1517,12 +1563,14 @@ void print_statistics() {
 
 				/* Print Prefetcher info */
 				printf("#  " CYN "# Prefetcher\n" RESET);
-				printf("#  prefetches total : %13ld    ",
+				printf("#  prefetches total : %9ld ",
 						stats.prefetches.load());
-				printf("#  prefetches updated : %13ld    ",
+				printf("#  prefetches updates : %9ld ",
 						stats.prefetches_updated.load());
-				printf("#  used_prefetch states : %13ld\n",
+				printf("#  prefetches uses : %9ld ",
 						stats.prefetches_used.load());
+				printf("#  remote misses total : %9ld\n",
+						stats.remote_misses.load());
 
 				/* Print advanced node information */
 				if(print_level > 2) {
