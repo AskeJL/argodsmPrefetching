@@ -39,6 +39,9 @@
 #include <utility>
 #include <vector>
 #include<list>
+#include <sys/types.h>
+#include <sys/syscall.h>
+
 
 #include "backend/backend.hpp"
 #include "mpi_lock.hpp"
@@ -72,6 +75,17 @@
 /** @brief Wrapper for unsigned char - basically a byte */
 typedef unsigned char argo_byte;
 
+/**
+ * @brief Gives number of ArgoDSM nodes
+ * @return Number of ArgoDSM nodes
+ */
+unsigned int argo_get_nodes();
+
+/**
+ * @brief Gives the ArgoDSM node id for the local process
+ * @return Returns the ArgoDSM node id for the local process
+ */
+argo::node_id_t argo_get_node_id();
 
 /** @brief Struct for global cache control data / directory */
 typedef struct myControlData {
@@ -159,11 +173,11 @@ typedef struct argo_statistics_struct {
 class HashMapTable
 {
 	/** @brief mutex to protect buffer */
-	mutable std::mutex buffer_mutex;
+	//mutable std::mutex buffer_mutex;
 
 	public:
 		// size of the hash table
-		const static int table_size = 32;
+		const static int table_size = 4096;
 		// Pointer to an array containing the keys
 		std::size_t addr_array[table_size];
 		std::string page_array[table_size];
@@ -171,7 +185,7 @@ class HashMapTable
 		HashMapTable(){
 			//std::scoped_lock lock_other{buffer_mutex};
 			std::fill(addr_array, addr_array + table_size, -1);
-			std::cout << "filled the array" << std::endl;
+			//std::cout << "filled the array" << std::endl;
 		}
 		// hash function to compute the index using table_size and key
 		long long int hashFunction(long long int key) {
@@ -195,103 +209,92 @@ class HashMapTable
 		int getIndex(std::size_t value) {
 			return hashFunction(generateIntFromString(value));
 		}
+		void deleteByIndex(int index)
+		{
+			addr_array[index]= -1;
+			page_array[index] = "";
+		}
 	public:
 		// insert function to push the keys in hash table
 		void insertElement(std::size_t addr, std::string page)
 		{	
-			std::cout << "insertElement before lock " << std::endl;
-			std::lock_guard<std::mutex> lock(buffer_mutex);
+			
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " <<  __func__ << ", locking" << std::endl;
+			//std::lock_guard<std::mutex> lock(buffer_mutex);
 			//std::scoped_lock lock_other{buffer_mutex};
 			int index = getIndex(addr);
 			//	std::cout << "index is " << index << std::endl;
 			addr_array[index]= addr;
 			page_array[index] = page;
-			std::cout << "insertElement releasing lock " << std::endl;
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " << __func__ << ", releasing locking" << std::endl;
 		}
 		// delete function to delete the element from the hash table
 		void deleteByAddr(std::size_t addr)
 		{
 			// try{
 			// std::scoped_lock lock_other{buffer_mutex};
-			std::cout << "deleteByAddr before lock " << std::endl;
-			std::lock_guard<std::mutex> lock(buffer_mutex);
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " <<  __func__ << ", locking" << std::endl;
+			//std::lock_guard<std::mutex> lock(buffer_mutex);
 			int index = getIndex(addr);
 			// finding the key at the computed index
-			deleteByIndex(index);
-			std::cout << "deleteByAddr releasing lock " << std::endl;
+			if (addr_array[index] == addr){
+			deleteByIndex(index);}
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " << __func__ << ", releasing locking" << std::endl;
 		}
-		void deleteByIndex(int index)
-		{
-			addr_array[index]= -1;
-			page_array[index] = "";
-		}
+		
 		int searchElement(std::size_t addr)
 		{
 			// std::scoped_lock lock_other{buffer_mutex};
-			std::cout << "searchElement before lock " << std::endl;
-			std::lock_guard<std::mutex> lock(buffer_mutex);
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " <<  __func__ << ", locking" << std::endl;
+			//std::lock_guard<std::mutex> lock(buffer_mutex);
 			int index = getIndex(addr);
 			if (addr == addr_array[index]){
-				std::cout << "searchElement releasing lock " << std::endl;
+				//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " << __func__ << ", releasing locking" << std::endl;
 				return index;
 			}
 			else {
-				std::cout << "searchElement releasing lock " << std::endl;
+				//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " << __func__ << ", releasing locking" << std::endl;
 				return -1;
 			}
 		}
 		void* getPageAddrPtr(std::size_t addr){
 			// std::scoped_lock lock_other{buffer_mutex};
-			std::cout << "getPageAddrPtr before lock " << std::endl;
-			std::lock_guard<std::mutex> lock(buffer_mutex);
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " <<  __func__ << ", locking" << std::endl;
+			//std::lock_guard<std::mutex> lock(buffer_mutex);
 			int index = getIndex(addr);
 			// finding the key at the computed index
 			if (addr == addr_array[index]){
-				std::cout << "getPageAddrPtr releasing lock " << std::endl;
+				//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " << __func__ << ", releasing locking" << std::endl;
 				return &page_array[index];
 				
 			}
 			else {
-				std::cout << "getPageAddrPtr releasing lock " << std::endl;
+				//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " << __func__ << ", releasing locking" << std::endl;
 				return nullptr;
 			}
 		}
 		// display function to showcase the whole hash table
 		void displayHashTable() {
 			// std::scoped_lock lock_other{buffer_mutex};
-			std::lock_guard<std::mutex> lock(buffer_mutex);
-			std::cout << "Hash table: " << std::endl;
+			//std::lock_guard<std::mutex> lock(buffer_mutex);
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " <<  __func__ << ", locking" << std::endl;
 			for (int i = 0; i < table_size; i++) {
 				if (page_array[i] != ""){
-					std::cout << i << " : " << addr_array[i] << " : " << page_array[i] << std::endl;
+					//std::cout << i << " : " << addr_array[i] << " : " << page_array[i] << std::endl;
 				}
 			}
-			std::cout << "Done printing hash table"<< std::endl;
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " << __func__ << ", releasing locking" << std::endl;
 			
 		}
 
 		void invalidate() {
 			// std::scoped_lock lock_other{buffer_mutex};
-			std::cout << "invalidate before lock " << std::endl;
-			std::lock_guard<std::mutex> lock(buffer_mutex);
+			//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " <<  __func__ << ", locking" << std::endl;
+			//std::lock_guard<std::mutex> lock(buffer_mutex);
 			for(int i = 0; i < table_size; i++){
-				//std::uintptr_t distrAddr = addr_array[i];    // get the address 
-				// std::uintptr_t lineAddr = distrAddr/(CACHELINE*pagesize);
-				// lineAddr*=(pagesize*CACHELINE);
-				// std::size_t classidx = get_classification_index(lineAddr);
-				
-				// if(// node is single writer
-				// 	(globalSharers[classidx+1] == id) ||		
-				// 	// No writer and assert that the node is a sharer
-				// 	((globalSharers[classidx+1] == 0) && ((globalSharers[classidx]&id) == id))
-				// ) {
-				// 	/* nothing - we keep the pages, SD is done in flushWB */
-				// } else {
 					deleteByIndex(i);
-					
-				//}
 			}
-		std::cout << "invalidate releasing lock " << std::endl;
+		//std::cout << argo_get_node_id() << ", " << syscall(__NR_gettid) << ", " << __func__ << ", releasing locking" << std::endl;
 		}
 };
 /**
@@ -626,17 +629,7 @@ void print_statistics();
 void argo_reset_coherence();
 
 
-/**
- * @brief Gives the ArgoDSM node id for the local process
- * @return Returns the ArgoDSM node id for the local process
- */
-argo::node_id_t argo_get_node_id();
 
-/**
- * @brief Gives number of ArgoDSM nodes
- * @return Number of ArgoDSM nodes
- */
-unsigned int argo_get_nodes();
 
 /**
  * @brief returns the maximum number of threads per ArgoDSM node (defined by NUM_THREADS)
