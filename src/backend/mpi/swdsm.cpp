@@ -196,6 +196,54 @@ std::size_t peek_offset(std::uintptr_t addr) {
 	return gptr.peek_offset();
 }
 
+/**
+ * @brief generate argo_prefetch entry for strides_table
+ * @param pc Program Counter that caused a page fault
+ * @param aligned_access_offset memory offset to load into the cache
+ * @pre aligned_access_offset must be aligned as CACHELINE*pagesize
+ * @return the newly inserted argo_prefetch entry
+ */
+argo_prefetch generate_strides_table_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
+	argo_prefetch prefetch_data;
+	unsigned long current_page = aligned_access_offset / pagesize;
+	prefetch_data.last_miss_page = current_page;
+
+	/* check if we have seen the PC before */
+	if (auto search = strides_table.find(pc); search != strides_table.end())
+	{
+		/* We did see the PC before */
+		unsigned int old_confidence = search->second.confidence;
+		unsigned long old_last_page = search->second.last_miss_page;
+		int old_stride = search->second.stride;
+		int difference = current_page - old_last_page;
+
+		/* Increse the confidence if see the stride again
+		   otherwise, decrease the confidence */
+		if (difference == old_stride && old_confidence < MAX_CONFIDENCE) {
+			prefetch_data.confidence += 1;
+		} else if (difference != old_stride && old_confidence > 0) {
+			prefetch_data.confidence -= 1;
+		}
+
+		/* Set stride only if the difference is greater than 1 */
+		if (difference > 1) {
+			prefetch_data.stride = difference;
+		} else {
+			prefetch_data.stride = 1;
+		}
+
+	} else {
+		prefetch_data.confidence = 0;
+		prefetch_data.stride = 1;
+	}
+
+	std::unique_lock stride_table_lock(prefetch_sync_lock);
+	strides_table[pc] = prefetch_data;
+	stride_table_lock.unlock();
+
+	return prefetch_data;
+}
+
 /*Loading and Prefetching*/
 /**
  * @brief load into cache helper function
@@ -237,47 +285,12 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 		return;
 	}
 
-	argo_prefetch prefetch_data;
-	auto current_page = aligned_access_offset / pagesize;
-	prefetch_data.last_miss_page = current_page;
-
-	/* check if we have seen the PC before */
-	if (auto search = strides_table.find(pc); search != strides_table.end())
-	{ /* We did see the PC before */
-		auto last_page = search->second.last_miss_page;
-		int old_stride = prefetch_data.stride;
-		unsigned int old_confidence = prefetch_data.confidence;
-		int difference = current_page - last_page;
-
-		/* Increse the confidence if see the stride again
-		   otherwise, decrease the confidence */
-		if (difference == old_stride && old_confidence < MAX_CONFIDENCE) {
-			prefetch_data.confidence += 1;
-		} else if (difference != old_stride && old_confidence > 0) {
-			prefetch_data.confidence -= 1;
-		}
-
-		/* Set stride if the difference is greater than 1 */
-		if (difference <= 1) {
-			prefetch_data.stride = 1;
-		} else {
-			prefetch_data.stride = difference;
-		}
-
-	} else {
-		prefetch_data.confidence = 0;
-		prefetch_data.stride = 1;
-	}
-
-	std::unique_lock stride_table_lock(prefetch_sync_lock);
-	strides_table[pc] = prefetch_data;
-	stride_table_lock.unlock();
+	argo_prefetch prefetch_data = generate_strides_table_entry(pc, aligned_access_offset);
 
 	/* Set the stride to fetch based on confidence for the PC */
 	unsigned long stride = 1;
 
-
-	if (prefetch_data.confidence > MIN_CONFIDENCE)
+	if (prefetch_data.confidence >= MIN_CONFIDENCE)
 	{
 		stride = prefetch_data.stride;
 	}
@@ -328,7 +341,7 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 	const std::size_t fetch_size = end_index - start_index;
 	const std::size_t classification_size = fetch_size*2;
 
-	stats.prefetches += used_fetch_size;
+	stats.prefetches.fetch_add(fetch_size);
 
 	/* For each page to load, true if page should be cached else false */
 	std::vector<bool> pages_to_load(used_fetch_size);
@@ -536,7 +549,7 @@ void load_cache_entry(unsigned long pc, std::uintptr_t aligned_access_offset) {
 			/* For pages that are not start_index,
 			unlock and increment prefetches count */
 			if(idx != start_index) {
-				stats.prefetches_updated++;
+				stats.prefetches_updated.fetch_add(1);
 				cache_locks[idx].unlock();
 			}
 		}
@@ -694,39 +707,7 @@ void handler(int sig, siginfo_t *si, void *context) {
 		assert(cacheControl[startIndex].state == VALID);
 		assert(cacheControl[startIndex].tag == aligned_access_offset);
 
-		/* Check if we have seen the PC before */
-		if (auto search = strides_table.find(pc); search != strides_table.end())
-		{
-			/* We did see the PC before */
-			argo_prefetch prefetch_data;
-			auto current_page = aligned_access_offset / pagesize;
-			auto last_page = search->second.last_miss_page;
-			int old_stride = prefetch_data.stride;
-			unsigned int old_confidence = prefetch_data.confidence;
-			int difference = current_page - last_page;
-
-			/* Increse the confidence if see the stride again
-			otherwise, decrease the confidence */
-			if (difference == old_stride && old_confidence < MAX_CONFIDENCE) {
-				prefetch_data.confidence += 1;
-			} else if (difference != old_stride && old_confidence > 0) {
-				prefetch_data.confidence -= 1;
-			}
-
-			/* Set stride if the difference is greater than 1 */
-			if (difference <= 1) {
-				prefetch_data.stride = 1;
-			} else {
-				prefetch_data.stride = difference;
-			}
-
-			prefetch_data.last_miss_page = current_page;
-
-			/* Update PC's entry in stride_table */
-			std::unique_lock stride_table_lock(prefetch_sync_lock);
-			strides_table[pc] = prefetch_data;
-			stride_table_lock.unlock();
-		}
+		generate_strides_table_entry(pc, aligned_access_offset);
 
 		/* increase the total remote misses */
 		stats.remote_misses.fetch_add(1);
